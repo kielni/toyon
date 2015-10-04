@@ -1,0 +1,19 @@
+{
+  "name": "ca-garden",
+  "version": "1.0.0",
+  "description": "California garden plants database",
+  "main": "get_size_and_sun.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kimberly Nicholls",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.4.2",
+    "cheerio": "^0.19.0",
+    "firebase": "^2.3.0",
+    "jsonfile": "^2.2.2",
+    "lodash": "^3.10.1",
+    "request": "^2.62.0"
+  }
+}

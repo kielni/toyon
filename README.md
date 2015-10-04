@@ -92,29 +92,5 @@ partial shade in South Inland); _moved to extra info column_
 
 The WUCOLS data includes names and water requirements for several thousand
 plants, but no other plant requirements (sun or shade? 1 or 20 feet tall)?
-
-### additional info
-
-Starting with the WUCOLS plant list, I scraped two sites to look for 
-additional info.
-
-#### search name cleanup
-
-add `name.search`; name minus
-
-    - spp.
-    - '
-    -  x 
-    - cvs.
-    -  and 
-
-
-### steps
-
-- download WUCOLS to wucols.csv 
-- WUCOLS -> reformatted, tab-delimited: `python3 format_wucols.py > wucols_remix.tsv`
-- manual cleanup: save as toyon_all.tsv
-- no or low water for zones 14-17: `awk -F '\t' '{ if ($7 == "N" || $7 == "L") print }' toyon_all.tsv > toyon.tsv`
-- to json: `python3 tsv_to_json.py toyon.tsv > toyon1.json`
-- clean up names add: `python3 add_search_names.py toyon1.json names.txt > toyon2.json`
-
+[scripts](scripts/README.md) scrape data on plants and write it to one 
+database.
