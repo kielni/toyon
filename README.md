@@ -11,7 +11,7 @@ books attempt to cover the entire US, but most of the plants they cover
 aren't adapted for dry summers. 
 
 Big beautiful garden books like 
-*[Plants and Landscapes for Summer-Dry Climates]*(http://www.amazon.com/Plants-Landscapes-Summer-Dry-Climates-Francisco/dp/0975323113) 
+[Plants and Landscapes for Summer-Dry Climates](http://www.amazon.com/Plants-Landscapes-Summer-Dry-Climates-Francisco/dp/0975323113) 
 are great for browsing, but bad for filtering (find low water use, partial 
 shade, 2-4 foot tall plants).  They're also too big and bulky (3.8 pounds)
 to carry around in the nursery.
@@ -26,14 +26,11 @@ I want to search, filter, and browse garden plants from my phone or tablet.
 
 ### WUCOLS
 
-[Water Use Classfication of Landscape Species](http://ucanr.edu/sites/WUCOLS/) (WUCOLS) is an amazing resource.
+[Water Use Classfication of Landscape Species](http://ucanr.edu/sites/WUCOLS/) (WUCOLS) is an amazing resource.  It
 
-    > provides evaluations of the irrigation water needs for over 3,500 taxa ... used in California landscapes. It is based on the observations and extensive field experience of thirty-six landscape horticulturists
+> provides evaluations of the irrigation water needs for over 3,500 taxa ... used in California landscapes. It is based on the observations and extensive field experience of thirty-six landscape horticulturists
 
-    > the intent of the WUCOLS  project was to  provide guidance    to  landscape   professionals   regarding   the water   needs   of  landscape   species
-
-
-While a ton of work went into collecting this data, the csv and pdf 
+Clearly a lot of work went into collecting this data, the csv and pdf 
 versions are really hard to use. I reformatted and reorganized the 
 data to make it easy to use, especially on a small screen.
 
@@ -48,9 +45,9 @@ lots of wasted space; _combined into one column_
 
 3 different types of info mixed together:
 
-    - category (bulb, grass, groundcover, perennial, shrub, tree, vine)
-    - group (bambroo, palm and cycad, succulent); these are never used alone
-    - California native
+- category (bulb, grass, groundcover, perennial, shrub, tree, vine)
+- group (bambroo, palm and cycad, succulent); these are never used alone
+- California native
 
 _separated into three columns_
 
@@ -58,10 +55,10 @@ _separated into three columns_
 
 some abbreviations are substrings of others:
 
-    - VL (very low) and L (low) water requirements
-    - G (gross) and Gc (groundcover)
-    - P (perennial) and Pm (palm and cycad)
-    - S (shrub) and Su (succulent)
+- VL (very low) and L (low) water requirements
+- G (gross) and Gc (groundcover)
+- P (perennial) and Pm (palm and cycad)
+- S (shrub) and Su (succulent)
 
 _changed to be non-overlapping_
 

@@ -4,18 +4,18 @@
 
 I scraped two sites to get details on plants in the WUCOLS list:
 
-    - [San Marcos Growers](http://www.smgrowers.com/), a wholesale nursery near Santa Barbara
-    - [Missouri Botantical Garden](http://www.missouribotanicalgarden.org/), which strangely seems to be one of the best data sources for Mediterran-adapted plants
+- [San Marcos Growers](http://www.smgrowers.com/), a wholesale nursery near Santa Barbara
+- [Missouri Botantical Garden](http://www.missouribotanicalgarden.org/), which strangely seems to be one of the best data sources for Mediterran-adapted plants
 
 ## search name cleanup
 
 add `name.search`; name minus
 
-    - spp.
-    - '
-    -  x 
-    - cvs.
-    -  and 
+- spp.
+- '
+-  x 
+- cvs.
+-  and 
 
 
 ## steps
