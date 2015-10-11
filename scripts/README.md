@@ -28,5 +28,5 @@ add `name.search`; name minus
 - clean up names add: `python3 add_search_names.py toyon1.json names.txt > toyon2.json`
 - add data from San Marcos Growers: `node scrape_san_marcos.js toyon2.json > toyon3.json`
 - add data from Missouri Botanical Gardens: `node scrape_missouri_botanical.js toyon3.json > toyon4.json`
-
+- get photos from Flickr: `node scrape_flickr.js toyon4.json | tee toyon5.json`
 
