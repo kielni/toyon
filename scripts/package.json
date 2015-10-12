@@ -12,6 +12,7 @@
     "async": "^1.4.2",
     "cheerio": "^0.19.0",
     "firebase": "^2.3.0",
+    "flickrapi": "^0.3.36",
     "jsonfile": "^2.2.2",
     "lodash": "^3.10.1",
     "request": "^2.62.0"
