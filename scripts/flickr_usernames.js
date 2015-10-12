@@ -13,12 +13,13 @@ var photos = {};
 
 var getUsername = function(flickr, ownerId, callback) {
     if (owners[ownerId]) {
-        callback();
+        console.log("\thad owner "+ownerId+" = "+owners[ownerId]);
+        callback(null, owners[ownerId]);
         return;
     }
     flickr.people.getInfo({user_id: ownerId}, function(err, result) {
         owners[ownerId] = result.person.username._content;
-        console.log("\nowner "+ownerId+" = "+owners[ownerId]);
+        console.log("\tlookup owner "+ownerId+" = "+owners[ownerId]);
         callback(null, owners[ownerId]);
     });
 };
@@ -34,6 +35,7 @@ var getFavoritesPage = function(flickr, page, callback) {
                     owner: photo.owner
                 };
             }
+            console.log("photo.id="+photo.id);
             getUsername(flickr, photo.owner, function(err, result) {
                 photos[photo.id].username = result;
                 forEachCallback();
