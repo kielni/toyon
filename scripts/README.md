@@ -34,6 +34,7 @@ add `name.search`; name minus
 - get unique labels for height, spread, and sun: `node get_labels.js toyon6.json | tee labels.json`
 - update missing labels
 - promote standardized height, spread, and sun values: `node standardize_req.js toyon6.json labels.json | tee toyon7.json`
+- keep only plants with full info; remove metadata not needed for screening: `node prune.js toyon7.json | tee pruned.json`
 
 ### TODO:
 
