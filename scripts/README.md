@@ -29,4 +29,12 @@ add `name.search`; name minus
 - add data from San Marcos Growers: `node scrape_san_marcos.js toyon2.json > toyon3.json`
 - add data from Missouri Botanical Gardens: `node scrape_missouri_botanical.js toyon3.json > toyon4.json`
 - get photos from Flickr: `node scrape_flickr.js toyon4.json | tee toyon5.json`
+- get Flickr usernames from ids: `node flickr_usernames.js | tee flickr_usernames.json`
+- merge usernames with photo db: `node flickr_cleanup.js toyon5.json flickr_usernames.json | tee toyon6.json`
+
+### TODO:
+
+- standardize height, spread, sun
+- filter plants with enough info
+- UI
 

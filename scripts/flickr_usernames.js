@@ -50,9 +50,10 @@ var getFavoritesPage = function(flickr, page, callback) {
 Flickr.tokenOnly(flickrOptions, function(error, flickr) {
     getFavoritesPage(flickr, 1, function(err, page, totalPages) {
         console.log("got favorites page 1/"+totalPages);
+        var pageNum = 2;
         async.timesSeries(totalPages-1, function(n, next) {
             console.log("\n\n*** get page "+(n+1));
-            getFavoritesPage(flickr, n+1, next);
+            getFavoritesPage(flickr, pageNum++, next);
         }, function(err) {
             console.log("json=");
             console.log(JSON.stringify({"flickrPhotos": photos}));
