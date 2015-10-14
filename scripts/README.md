@@ -31,6 +31,9 @@ add `name.search`; name minus
 - get photos from Flickr: `node scrape_flickr.js toyon4.json | tee toyon5.json`
 - get Flickr usernames from ids: `node flickr_usernames.js | tee flickr_usernames.json`
 - merge usernames with photo db: `node flickr_cleanup.js toyon5.json flickr_usernames.json | tee toyon6.json`
+- get unique labels for height, spread, and sun: `node get_labels.js toyon6.json | tee labels.json`
+- update missing labels
+- promote standardized height, spread, and sun values: `node standardize_req.js toyon6.json labels.json | tee toyon7.json`
 
 ### TODO:
 
