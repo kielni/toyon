@@ -8,7 +8,6 @@ import PlantImage from './PlantImage.jsx';
 export default React.createClass({
     render() {
         var plant = this.props.plant;
-        var img = plant.photos ? <PlantImage photos={plant.photos} show={1} /> : '';
         var size = plant.height && plant.spread ? <Size height={plant.height} spread={plant.spread} /> : '';
         return (
             <ListGroupItem key={plant.id} className="plant-list-item">
@@ -30,7 +29,7 @@ export default React.createClass({
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={4}>{img}</Col>
+                    <Col sm={4}><PlantImage photos={plant.photos} show={1} /></Col>
                 </Row>
             </ListGroupItem>
         );
