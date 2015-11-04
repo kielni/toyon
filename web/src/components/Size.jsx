@@ -1,25 +1,16 @@
 import React from 'react';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 export default React.createClass({
-    labels: {
-        low: '< 1ft',
-        small: '1-3 ft',
-        medium: '3-8 ft',
-        large: '8+ ft'
-    },
-
     render() {
-        var cls = 'size '+this.props.height.bucket;
-        var tooltip = (<Tooltip>{this.labels[this.props.height.bucket]}</Tooltip>);
+        var height = this.props.height;
+        var heightRange = height.from === height.to ? height.from : height.from+"-"+height.to;
+        var spread = this.props.spread;
+        var spreadRange = spread.from === spread.to ? spread.from : spread.from+"-"+spread.to;
         return (
-            <div className="size-req">
-                <OverlayTrigger placement="bottom" overlay={tooltip}>
-                    <span className={cls}></span>
-                </OverlayTrigger>
-                <span className="height">{this.props.height.from}-{this.props.height.to}' tall</span>
+            <div className="size-range">
+                <span className="height">{heightRange}' tall</span>
                 <span className="by">x</span>
-                <span className="width">{this.props.spread.from}-{this.props.spread.to}' wide</span>
+                <span className="width">{spreadRange}' wide</span>
             </div>
         );
     }

@@ -12,11 +12,11 @@ export default React.createClass({
         if (bySrc.flickr || bySrc.missouriBotanical) {
             var url = bySrc.flickr ? photos.flickr[0] : photos.missouriBotanical[0];
             return (
-                <div className="plant-image"><Image src={url} responsive rounded /></div>
+                <div className="plant-image"><Image src={url} responsive/></div>
             );
         }
         // TODO: check show prop show carousel if > 1
-        return (<span className="no-image"></span>);
+        return (<div className="plant-image none"></div>);
     }
 });
 
