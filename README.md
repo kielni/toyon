@@ -62,6 +62,14 @@ some abbreviations are substrings of others:
 
 _changed to be non-overlapping_
 
+water
+
+- VL -> N none
+- L -> L low
+- M -> M moderate
+- H -> H high
+
+
 #### 6 regions
 
 new set of codes (1-6)
