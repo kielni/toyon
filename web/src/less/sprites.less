@@ -1,0 +1,52 @@
+.water, .size, .sun {
+    background: url(https://s3-us-west-1.amazonaws.com/toyon/sprites.png) no-repeat;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.water {
+    width: 12px;
+    height: 16px;
+    &.N {
+        background-position: -2px -49px ;
+    }
+    &.L {
+        background-position: -18px -48px ;
+    }
+    &.M {
+        background-position: -34px -48px ;
+    }
+}
+
+.sun {
+    width: 16px;
+    height: 16px;
+
+    &.sun {
+        background-position: -42px 0;
+    }
+    &.part {
+        background-position: -22px 0;
+    }
+    &.shade {
+        background-position: 0 0;
+    }
+}
+
+.size {
+    width: 16px;
+    height: 16px;
+
+    &.low {
+        background-position: -1px -23px ;
+    }
+    &.small {
+        background-position: -20px -23px ;
+    }
+    &.medium {
+        background-position: -36px -24px ;
+    }
+    &.large {
+        background-position: -54px -25px ;
+    }
+}

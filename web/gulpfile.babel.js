@@ -19,6 +19,9 @@ import cssnano from 'cssnano';
 import htmlReplace from 'gulp-html-replace';
 import image from 'gulp-image';
 import runSequence from 'run-sequence';
+import less from 'gulp-less';
+import path from 'path';
+
 
 const paths = {
   bundle: 'app.js',
@@ -80,6 +83,14 @@ gulp.task('styles', () => {
   .pipe(reload({stream: true}));
 });
 
+gulp.task('less', function () {
+  return gulp.src('src/less/**/*.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('src/styles'));
+});
+
 gulp.task('htmlReplace', () => {
   gulp.src('index.html')
   .pipe(htmlReplace({css: 'styles/main.css', js: 'js/app.js'}))
@@ -99,15 +110,16 @@ gulp.task('lint', () => {
 });
 
 gulp.task('watchTask', () => {
+  gulp.watch('src/**/*.less', ['less']);
   gulp.watch(paths.srcCss, ['styles']);
   gulp.watch(paths.srcJsx, ['lint']);
 });
 
 gulp.task('watch', cb => {
-  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'styles', 'lint', 'images'], cb);
+  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'less', 'styles', 'lint', 'images'], cb);
 });
 
 gulp.task('build', cb => {
   process.env.NODE_ENV = 'production';
-  runSequence('clean', ['browserify', 'styles', 'htmlReplace', 'images'], cb);
+  runSequence('clean', ['browserify', 'less', 'styles', 'htmlReplace', 'images'], cb);
 });

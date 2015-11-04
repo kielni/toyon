@@ -12,24 +12,22 @@ export default React.createClass({
         return (
             <ListGroupItem key={plant.id} className="plant-list-item">
                 <Row className="showGrid">
-                    <Col sm={8}>
-                        <div className="name">
-                            <span className="botanical-name">{plant.name.botanical}</span> - 
-                            <span className="common-name">{plant.name.common}</span>
-                        </div>
-                        <Row className="requirements">
+                    <Col sm={9}>
+                        <Row>
+                            <Col sm={8}>
+                                <div className="name">
+                                    <div className="botanical-name">{plant.name.botanical}</div>
+                                    <div className="common-name">{plant.name.common}</div>
+                                </div>
+                            </Col>
                             <Col sm={4}>
                                 <Sun sun={plant.sun.range} />
-                            </Col>
-                            <Col sm={4}>
-                                <Water water={plant.water.range} />
-                            </Col>
-                            <Col sm={4}>
+                                <Water water={plant.water.range}/>
                                 {size}
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={4}><PlantImage photos={plant.photos} show={1} /></Col>
+                    <Col sm={3}><PlantImage photos={plant.photos} show={1} /></Col>
                 </Row>
             </ListGroupItem>
         );
