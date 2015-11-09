@@ -1,110 +1,154 @@
 @import 'sprites.less';
 
-.plant-list-item {
-    .plant {
-        background-attachment: fixed;
+.plants {
+    background-color: #fff;
+    margin: 55px 0 0 0;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.plant-item {
+    margin: 10px 10px 30px 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+
+    .photos-col, .info-col {
+        padding: 0;
+    }
+    .slick-slider {
+        margin-bottom: 0;
+    }
+    .plant-slide {
+        background-color: #000;
+        &.no-photo {
+            background-color: #fff;
+        }
+        text-align: center;
         overflow: hidden;
-        width: 400px;
-        height: 300px;
-        /* TODO: repeat none, clip/center on actual bg dimensions */
-        position: relative;
-        margin: 0px;
-        border-bottom: 2px solid #ccc;
-
-        .details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+    }
+    .no-photo {
+        font-size: 1.5em;
+        color: #fff;
+        .plant-slide {
+            position: relative;
+            height: 200px;
             width: 100%;
-            padding: 5px 10px 0 10px;
-            background: inherit;
-            background-attachment: fixed;
-            overflow: hidden;
-
-            &:before {
-                content: "";
-                position: absolute;
-                top: -20px;
-                left: 0;
-                width: 200%;
-                height: 200%;
-                background: inherit;
-                background-attachment: fixed;
-                -webkit-filter: blur(4px);
-                filter: blur(4px);
+            background-color: #fff;
+        }
+        .plant-img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+        }
+        .overlay {
+            z-index: 100;
+            position: absolute;
+            left: 50%;
+            &.text {
+                top: 100px;
             }
-
-            &:after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.25)
+            &.credit {
+                top: 205px;
             }
-
-            .placeholder {
-                margin: 0;
-                color: white;
+            .abs-center, .photo-credit {
                 position: relative;
-                z-index: 1;
+                left: -50%;
             }
         }
     }
-    .name {
-        vertical-align: top;
-        display: inline-block;
-        width: 195px;
-        font-weight: bold;
-        .botanical-name {
-            font-style: italic;
+    .plant-slider {
+        .slick-prev {
+            left: 10px;
         }
-        .photo-credit {
-            font-weight: normal;
-            font-size: 9px;
+        .slick-next {
+            right: 10px;
+        }
+        .slick-prev:before, .slick-next:before {
+            color: #98a697;
+        }
+        .slick-dots {
+            bottom: 0;
+            margin-bottom: 20px;
+            li button:before {
+                color: #ccc;
+                opacity: 0.8;
+            }
+            li.slick-active button:before {
+                color: #BFFF00;
+                opacity: 1;
+                font-weight: bold;
+            }
+            li button:before {
+                font-size: 11px;
+            }
+        }
+    }
+    .plant-img {
+        height: 768px;
+        @media (min-width: 768px) {
+            height: 480px;
+        }
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+    .photo-credit {
+        margin-left: 5px;
+        color: #fff;
+        margin-top: -20px;
+        font-weight: normal;
+        font-size: 10px;
+        a {
+            color: #fff;
+            text-decoration:  underline;
         }
     }
     .info {
-        vertical-align: top;
-        display: inline-block;
-        width: 145px;
-        font-size: 12px;
-    }
-    .plant-type {
-        display: inline;
-        list-style: none;
-        padding: 0;
-        li {
+        padding: 20px;
+        border-top: 0;
+        border-top: 1px #000;
+        .name {
+            font-weight: bold;
+            font-weight: bold;
+            .botanical-name {
+                font-style: italic;
+                font-size: 1.2em;
+            }
+            margin-bottom: 10px;
+        }
+        .requirements {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .details {
+            display: inline-block;
+            padding-right: 0.5em;
+        }
+        .plant-type {
             display: inline;
-            &:after {
-                content: ", ";
+            list-style: none;
+            padding: 0;
+            li {
+                display: inline;
+                &:after {
+                    content: ", ";
+                }
+                &:last-child:after {
+                    content: "";
+                }
             }
-            &:last-child:after {
-                content: "";
+        }
+        .size-range {
+            .by {
+                padding-left: 5px;
+                padding-right: 5px;
             }
         }
     }
-    .size-range {
-        .by {
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-    }
-    .sun-req {
-        display: inline-block;
-        width: 68px;
-    }
-    .water-req {
-        display: inline-block;
-        width: 56px;
-    }
-    .size-req {
-        display: inline-block;
-    }
-}
-
-* {
-    box-sizing: border-box;
 }
 

@@ -15,7 +15,7 @@ export default React.createClass({
         var plantType = this.props.type.split(/\s+/).map((code) => {
             var cls = 'type '+code;
             return (
-                <li className={cls} key={code}>{this.labels[code]}</li>
+                <li className={{cls}} key={code}>{this.labels[code]}</li>
             );
         });
         return (
