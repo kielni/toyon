@@ -31,7 +31,7 @@ var getPhotos = function(flickr, plant, callback) {
         plant.photos.flickrTitles = {};
         var photos = result.photos.photo || [];
         photos.forEach(function(photo) {
-            var url = "https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_z.jpg";
+            var url = "https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_b.jpg";
             plant.photos.flickr.push(url);
             plant.photos.flickrTitles[photo.id] = photo.title;
             flickr.favorites.add({photo_id: photo.id}, function(err, result) {});

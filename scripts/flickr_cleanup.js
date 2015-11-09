@@ -16,7 +16,7 @@ var flickrPhotos = jf.readFileSync(process.argv[3], "utf-8").flickrPhotos;
 console.log(Object.keys(flickrPhotos).length+" photos in favorites");
 
 /*
-"flickr": [ "https://farm9.staticflickr.com/8566/15342403823_97eece38ab_z.jpg"],
+"flickr": [ "https://farm9.staticflickr.com/8566/15342403823_97eece38ab_b.jpg"],
 "flickrTitles": { "15342403823": "Abies pinsapo - Spanish Fir"}
 */
 plants.forEach(function(plant) {
