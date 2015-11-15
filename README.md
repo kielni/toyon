@@ -46,7 +46,7 @@ lots of wasted space; _combined into one column_
 3 different types of info mixed together:
 
 - category (bulb, grass, groundcover, perennial, shrub, tree, vine)
-- group (bambroo, palm and cycad, succulent); these are never used alone
+- group (bamboo, palm and cycad, succulent); these are never used alone
 - California native
 
 _separated into three columns_
