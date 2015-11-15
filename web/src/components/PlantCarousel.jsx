@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 
 const missing = {
                 src: 'flickr',
-                url: 'https://farm3.staticflickr.com/2628/3831504097_2ddabec06e_z.jpg?zz=1',
+                url: 'https://farm3.staticflickr.com/2628/3831504097_2ddabec06e_z.jpg',
                 flickr: {
                     authorId: '41572124@N06',
                     imgId: 3831504097,
