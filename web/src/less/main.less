@@ -1,10 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 @import 'sprites.less';
 
+body {
+    background-color: #f3d895;
+}
+
 .plants {
-    background-color: #fff;
     margin: 55px 0 0 0;
 }
 
+.navbar {
+    background-image: linear-gradient(to bottom,#394726 0,#4c562c 100%);
+    .navbar-brand, .navbar-nav>li>a{
+        color: #fff;
+    }
+}
 .vertical-align {
     display: flex;
     align-items: center;
@@ -14,7 +24,13 @@
     margin: 10px 10px 30px 10px;
     background-color: #fff;
     border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
 
+    .plant-carousel {
+        padding-left: 0;
+        padding-right: 0;
+    }
     .photos-col, .info-col {
         padding: 0;
     }
@@ -23,6 +39,7 @@
     }
     .plant-slide {
         background-color: #000;
+        border-radius: 5px;
         &.no-photo {
             background-color: #fff;
         }
@@ -103,6 +120,10 @@
         margin-top: -20px;
         font-weight: normal;
         font-size: 10px;
+        .by {
+            background-color: rgba(0, 0, 0, 0.3);;
+            padding: 3px;
+        }
         a {
             color: #fff;
             text-decoration:  underline;
@@ -113,11 +134,15 @@
         border-top: 0;
         border-top: 1px #000;
         .name {
+            border-bottom: 1px solid #000;
             font-weight: bold;
             font-weight: bold;
             .botanical-name {
                 font-style: italic;
                 font-size: 1.2em;
+            }
+            .common-name {
+                margin-top: 5px;
             }
             margin-bottom: 10px;
         }
@@ -143,10 +168,53 @@
                 }
             }
         }
+        .plant-group {
+            display: inline-block;
+            margin-left: 1em;
+        }
         .size-range {
+            margin-top: 5px;
             .by {
                 padding-left: 5px;
                 padding-right: 5px;
+            }
+        }
+    }
+    .more-info {
+        padding-top: 10px;
+        .more {
+            font-weight: bold;
+        }
+        .more-list {
+            .source {
+                padding-left: 0px;
+                display: inline-block;
+                width: 16px;
+                font-size: 0;
+                margin-top: 7px;
+                background-size: 16px 16px;
+                background-repeat: none;
+            }
+            #missouriBotanicalLinks {
+                content: url(http://www.missouribotanicalgarden.org/favicon.ico);
+            }
+            #sanMarcosLinks {
+                content: url(http://www.smgrowers.com/favicon.ico);
+            }
+            ul {
+                padding-left: 0px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+                display: inline-block;
+            }
+            li {
+                display: inline;
+                &:after {
+                    content: ", ";
+                }
+                &:last-child:after {
+                    content: "";
+                }
             }
         }
     }

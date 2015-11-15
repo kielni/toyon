@@ -4,6 +4,8 @@ import Sun from './Sun.jsx';
 import Water from './Water.jsx';
 import Size from './Size.jsx';
 import SizeBucket from './SizeBucket.jsx';
+import PlantGroup from './PlantGroup.jsx';
+import MoreInfo from './MoreInfo.jsx';
 import { Row, Col } from 'react-bootstrap';
 
 export default React.createClass({
@@ -11,19 +13,17 @@ export default React.createClass({
         var plant = this.props.plant;
         var size = plant.height && plant.spread ? <Size height={plant.height} spread={plant.spread} /> : '';
         var sizeBucket = plant.height && plant.height.bucket ? <SizeBucket bucket={plant.height.bucket} /> : '';
+        var moreInfo = plant.search && Object.keys(plant.search).length > 0 ? <MoreInfo search={plant.search} /> : '';
+        var group = plant.group ? <PlantGroup group={plant.group} /> : '';
         return (
             <div className="info">
                 <div className="name">
                     <div className="botanical-name">
                         {plant.name.botanical}
                     </div>
-                    <div className="common-name">{plant.name.common}</div>
-                </div>
-                <div className="details">
-                    {size}
-                </div>
-                <div className="details">
-                    <PlantType type={plant.type} />
+                    <div className="common-name">
+                        {plant.name.common}
+                    </div>
                 </div>
                 <Row className="requirements">
                     <Col xs={4}>
@@ -36,6 +36,12 @@ export default React.createClass({
                         {sizeBucket}
                     </Col>
                 </Row>
+                <div className="details">
+                    <PlantType type={plant.type} />
+                    {group}
+                    {size}
+                </div>
+                {moreInfo}
             </div>
         );
     }
