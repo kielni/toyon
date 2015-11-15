@@ -66,7 +66,7 @@ export default React.createClass({
             lazyLoad: true
         };
         var photos = this.getPhotos(plant);
-        if (photos.length === 1) {
+        if (!photos.length) {
             return (
                 <div className="plant-slider no-photo">
                     <div className="plant-slide">
