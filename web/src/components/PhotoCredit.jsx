@@ -18,7 +18,7 @@ export default React.createClass({
         }
         return (
             <div className="photo-credit">
-                photo by <a href={url}>{name}</a>
+                <span className="by">photo by <a href={url}>{name}</a></span>
             </div>
         );
     }
