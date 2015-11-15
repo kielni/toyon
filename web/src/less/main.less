@@ -3,10 +3,13 @@
 
 body {
     background-color: #f3d895;
+    font-size: 16px;
 }
 
 .plants {
     margin: 55px 0 0 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .navbar {
@@ -21,11 +24,10 @@ body {
 }
 
 .plant-item {
-    margin: 10px 10px 30px 10px;
+    margin: 25px 0 0 0;
     background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 10px;
+    padding: 0;
+    border-bottom: 3px solid #394726;
 
     .plant-carousel {
         padding-left: 0;
@@ -39,7 +41,6 @@ body {
     }
     .plant-slide {
         background-color: #000;
-        border-radius: 5px;
         &.no-photo {
             background-color: #fff;
         }
@@ -47,11 +48,10 @@ body {
         overflow: hidden;
     }
     .no-photo {
-        font-size: 1.5em;
         color: #fff;
         .plant-slide {
             position: relative;
-            height: 200px;
+            height: 250px;
             width: 100%;
             background-color: #fff;
         }
@@ -67,10 +67,11 @@ body {
             position: absolute;
             left: 50%;
             &.text {
+                font-size: 1.5em;
                 top: 100px;
             }
             &.credit {
-                top: 205px;
+                top: 252px;
             }
             .abs-center, .photo-credit {
                 position: relative;
@@ -86,17 +87,17 @@ body {
             right: 10px;
         }
         .slick-prev:before, .slick-next:before {
-            color: #98a697;
+            color: #6699CC;
         }
         .slick-dots {
             bottom: 0;
             margin-bottom: 20px;
             li button:before {
-                color: #ccc;
+                color: #6699CC;
                 opacity: 0.8;
             }
             li.slick-active button:before {
-                color: #BFFF00;
+                color: #f77b0c;
                 opacity: 1;
                 font-weight: bold;
             }
@@ -119,7 +120,7 @@ body {
         color: #fff;
         margin-top: -20px;
         font-weight: normal;
-        font-size: 10px;
+        font-size: 0.8em;
         .by {
             background-color: rgba(0, 0, 0, 0.3);;
             padding: 3px;
@@ -131,18 +132,16 @@ body {
     }
     .info {
         padding: 20px;
-        border-top: 0;
-        border-top: 1px #000;
+        margin-bottom: 30px;
         .name {
-            border-bottom: 1px solid #000;
-            font-weight: bold;
             font-weight: bold;
             .botanical-name {
                 font-style: italic;
-                font-size: 1.2em;
+                font-size: 1.5em;
             }
             .common-name {
                 margin-top: 5px;
+                font-size: 1.2em;
             }
             margin-bottom: 10px;
         }
