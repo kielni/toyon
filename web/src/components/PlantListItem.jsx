@@ -8,14 +8,18 @@ export default React.createClass({
         var plant = this.props.plant;
         var id = 'plant'+plant.id;
         return (
-            <Row className="plant-item" id={id}>
-                <Col xs={12} md={7} className="plant-carousel">
-                    <PlantCarousel plant={plant} />
-                </Col>
-                <Col xs={12} md={5}>
-                    <PlantInfo plant={plant} />
-                </Col>
-            </Row>
+            <div className="row plant-item">
+                <div className="col s12 m7">
+                    <div className="card">
+                        <div className="x-card-image plant-carousel">
+                            <PlantCarousel plant={plant} />
+                        </div>
+                        <div className="card-content">
+                            <PlantInfo plant={plant} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 });

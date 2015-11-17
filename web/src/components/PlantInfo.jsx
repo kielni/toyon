@@ -17,35 +17,43 @@ export default React.createClass({
         var group = plant.group ? <PlantGroup group={plant.group} /> : '';
         return (
             <div className="info">
-                <Row className="name">
-                    <Col xs={6}>
+                <div className="row name">
+                    <div className="col s6">
                         <div className="botanical-name">
                             {plant.name.botanical}
                         </div>
                         <div className="common-name">
                             {plant.name.common}
                         </div>
-                    </Col>
-                    <Col xs={6}>
-                        <Row className="requirements">
-                            <Col xs={4}>
+                    </div>
+                    <div className="col s6">
+                        <div className="row requirements">
+                            <div className="col s4 sun-col">
                                 <Sun sun={plant.sun.range} />
-                            </Col>
-                            <Col xs={4}>
+                            </div>
+                            <div className="col s4">
                                 <Water water={plant.water.range}/>
-                            </Col>
-                            <Col xs={4}>
+                            </div>
+                            <div className="col s4">
                                 {sizeBucket}
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <div className="details">
-                    <PlantType type={plant.type} />
-                    {group}
-                    {size}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {moreInfo}
+                <div className="row details">
+                    <div className="col s6">
+                        <PlantType type={plant.type} />
+                        {group}
+                    </div>
+                    <div className="col s6">
+                        {size}
+                    </div>
+                </div>
+                <div className="row details">
+                    <div className="col s12">
+                        {moreInfo}
+                    </div>
+                </div>
             </div>
         );
     }

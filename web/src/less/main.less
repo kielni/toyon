@@ -3,10 +3,13 @@
 
 body {
     /*background-color: #f3d895;*/
-    background-color: #F4F1DE;
+    background-color: #fff;
     font-size: 16px;
 }
-
+nav {
+    background-color: #81B29A;
+}
+/*
 .plants {
     margin: 55px 0 0 0;
     padding-left: 0;
@@ -23,14 +26,15 @@ body {
     display: flex;
     align-items: center;
 }
-
+*/
 .plant-item {
+    /*
     margin: 25px 0 0 0;
     background-color: #fff;
     padding: 0;
     border-bottom: 3px solid #394726;
     border-top: 1px solid #394726;
-
+    */
     .plant-carousel {
         padding-left: 0;
         padding-right: 0;
@@ -42,7 +46,7 @@ body {
         margin-bottom: 0;
     }
     .plant-slide {
-        background-color: #000;
+        background-color: #F4F1DE;
         &.no-photo {
             background-color: #fff;
         }
@@ -89,17 +93,17 @@ body {
             right: 10px;
         }
         .slick-prev:before, .slick-next:before {
-            color: #6699CC;
+            color: #3D405B;
         }
         .slick-dots {
             bottom: 0;
             margin-bottom: 20px;
             li button:before {
-                color: #6699CC;
+                color: #F3D895;
                 opacity: 0.8;
             }
             li.slick-active button:before {
-                color: #f77b0c;
+                color: #E07A5F;
                 opacity: 1;
                 font-weight: bold;
             }
@@ -133,8 +137,6 @@ body {
         }
     }
     .info {
-        padding: 20px;
-        margin-bottom: 30px;
         .name {
             font-weight: bold;
             .botanical-name {
@@ -145,15 +147,15 @@ body {
                 margin-top: 5px;
                 font-size: 1.2em;
             }
-            margin-bottom: 10px;
         }
         .requirements {
             padding-top: 5px;
             padding-bottom: 5px;
+            .sun-col {
+                padding-left: 0;
+            }
         }
         .details {
-            display: inline-block;
-            padding-right: 0.5em;
         }
         .plant-type {
             display: inline;
@@ -182,13 +184,16 @@ body {
         }
     }
     .more-info {
-        padding-top: 10px;
         .more {
             font-weight: bold;
         }
         .more-list {
+            .icon {
+                padding-left: 0;
+            }
             .source {
                 padding-left: 0px;
+                margin-right: 10px;
                 display: inline-block;
                 width: 16px;
                 font-size: 0;

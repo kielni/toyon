@@ -1,28 +1,28 @@
 import React from 'react';
 import PlantListItem from './PlantListItem.jsx';
-import { Grid } from 'react-bootstrap';
+//import Infinite from 'react-infinite';
 
 export default React.createClass({
-    chunk(arr, n) {
-        return arr.reduce(function(p, cur, i) {
-            (p[i/n|0] = p[i/n|0] || []).push(cur);
-            return p;
-        },[]);
-    },
-
     render() {
         if (!this.props.plants.length) {
             return (
                 <div className="no-results">No matching plants.</div>
             );
         }
+        var heights = [];
         var items = this.props.plants.map((plant) => {
+            heights.push((!plant.photos || !plant.photos.length) ? 264 : 478);
             return <PlantListItem key={plant.id} plant={plant} />
         });
+        /*
+                <Infinite containerHeight={window.innerHeight} elementHeight={heights} useWindowAsScrollContainer> 
+                    {items}
+                </Infinite>
+        */
         return (
-            <Grid className="plants" fluid={true}>
+            <div className="x-plants">
                 {items}
-            </Grid>
+            </div>
         );
     }
 });

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link }  from 'react-router';
-import { Navbar, NavBrand, Nav, NavItem } from 'react-bootstrap';
 import PlantList from './PlantList.jsx';
 import Request from 'superagent';
 
@@ -20,15 +19,24 @@ export default React.createClass({
     },
 
     render() {
-        var filtered = this.state.plants.slice(0, 10);
+        if (!this.state.plants) {
+            return (
+                <div class="progress">
+                  <div class="indeterminate"></div>
+                </div>
+            );
+        }
+        var filtered = this.state.plants.slice(0, 25);
         return (
             <div className="toyon">
-                <Navbar fixedTop>
-                    <NavBrand>Toyon</NavBrand>
-                    <Nav right>
-                        <NavItem>{this.state.plants.length} plants</NavItem>
-                    </Nav>
-                </Navbar>
+                <div class="navbar-fixed">
+                    <nav>
+                        <div class="nav-wrapper">
+                            <a href="#" className="brand-logo center">Toyon</a>
+                            <span class="new badge">{this.state.plants.length} plants</span>
+                        </div>
+                    </nav>
+                </div>
                 <PlantList plants={filtered} />
             </div>
         );
