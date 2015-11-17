@@ -10,11 +10,8 @@ export default React.createClass({
     render() {
         var water = this.props.water.map((waterCode) => {
             var cls = 'water '+waterCode;
-            var tooltip = (<Tooltip id={this.labels[waterCode]}>{this.labels[waterCode]}</Tooltip>);
             return (
-                <OverlayTrigger key={waterCode} placement="bottom" overlay={tooltip}>
-                    <span className={cls}></span>
-                </OverlayTrigger>
+                <span className={cls} key={waterCode}></span>
             );
         });
         return (

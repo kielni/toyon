@@ -10,11 +10,8 @@ export default React.createClass({
     render() {
         var sun = this.props.sun.map((sunCode) => {
             var cls = 'sun '+sunCode;
-            var tooltip = (<Tooltip id={this.labels[sunCode]}>{this.labels[sunCode]}</Tooltip>);
             return (
-                <OverlayTrigger key={sunCode} placement="bottom" overlay={tooltip}>
-                    <div className={cls}></div>
-                </OverlayTrigger>
+                <div className={cls} key={sunCode}></div>
             );
         });
         return (
