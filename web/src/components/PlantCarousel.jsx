@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
 import PhotoCredit from './PhotoCredit.jsx';
 import Slider from 'react-slick';
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import PlantInfo from './PlantInfo.jsx';
 import PlantCarousel from './PlantCarousel.jsx';
-import { Row, Col } from 'react-bootstrap';
 
 export default React.createClass({
     render() {

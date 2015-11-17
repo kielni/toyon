@@ -6,7 +6,6 @@ import Size from './Size.jsx';
 import SizeBucket from './SizeBucket.jsx';
 import PlantGroup from './PlantGroup.jsx';
 import MoreInfo from './MoreInfo.jsx';
-import { Row, Col } from 'react-bootstrap';
 
 export default React.createClass({
     render() {

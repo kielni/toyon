@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 export default React.createClass({
     labels: {
