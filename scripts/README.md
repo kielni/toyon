@@ -34,11 +34,16 @@ add `name.search`; name minus
 - get unique labels for height, spread, and sun: `node get_labels.js toyon6.json | tee labels.json`
 - update missing labels
 - promote standardized height, spread, and sun values: `node standardize_req.js toyon6.json labels.json | tee toyon7.json`
-- keep only plants with full info; remove metadata not needed for screening: `node prune.js toyon7.json | tee pruned.json`
+- add San Marcos search results left out: `node get_san_marcos.js toyon3.json toyon7.json | tee toyon8.json`
+- keep only plants with full info; remove metadata not needed for screening: `node prune.js toyon8.json | tee pruned.json`
+- get biggest Flickr photo <= 1600px: `node flickr_photo_size.js pruned.json | tee flickr.json`
 
 ### TODO:
 
-- standardize height, spread, sun
-- filter plants with enough info
-- UI
+- prune: include links
+- prune include group: in toyon7, not pruned
+- favorite button saves to localstorage
+- remove missing pictures
+- filter drop down
+
 
