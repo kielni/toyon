@@ -1,6 +1,5 @@
 import React from 'react';
 import PlantListItem from './PlantListItem.jsx';
-//import Infinite from 'react-infinite';
 
 export default React.createClass({
     render() {
@@ -14,13 +13,8 @@ export default React.createClass({
             heights.push((!plant.photos || !plant.photos.length) ? 264 : 478);
             return <PlantListItem key={plant.id} plant={plant} />
         });
-        /*
-                <Infinite containerHeight={window.innerHeight} elementHeight={heights} useWindowAsScrollContainer> 
-                    {items}
-                </Infinite>
-        */
         return (
-            <div className="x-plants">
+            <div className="plant-list">
                 {items}
             </div>
         );
