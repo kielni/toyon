@@ -3,6 +3,10 @@ import PlantInfo from './PlantInfo.jsx';
 import PlantCarousel from './PlantCarousel.jsx';
 
 export default React.createClass({
+    handleFavorite(plantId, isFavorite) {
+        this.props.onFavorite(plantId, isFavorite);
+    },
+
     render() {
         var plant = this.props.plant;
         var id = 'plant'+plant.id;
@@ -14,7 +18,7 @@ export default React.createClass({
                             <PlantCarousel plant={plant} />
                         </div>
                         <div className="card-content">
-                            <PlantInfo plant={plant} />
+                            <PlantInfo plant={plant} onFavorite={this.handleFavorite} />
                         </div>
                     </div>
                 </div>

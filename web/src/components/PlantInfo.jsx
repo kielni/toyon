@@ -8,12 +8,24 @@ import PlantGroup from './PlantGroup.jsx';
 import MoreInfo from './MoreInfo.jsx';
 
 export default React.createClass({
+    getInitialState() {
+        return {favorite: this.props.plant.favorite};
+    },
+
+    handleFavorite(event) {
+        let newValue = !this.state.favorite;
+        this.setState({favorite: newValue}, () => {
+            this.props.onFavorite(this.props.plant.id, newValue);
+        });
+    },
+
     render() {
         var plant = this.props.plant;
         var size = plant.height && plant.spread ? <Size height={plant.height} spread={plant.spread} /> : '';
         var sizeBucket = plant.height && plant.height.bucket ? <SizeBucket bucket={plant.height.bucket} /> : '';
         var moreInfo = plant.search && Object.keys(plant.search).length > 0 ? <MoreInfo search={plant.search} /> : '';
         var group = plant.group ? <PlantGroup group={plant.group} /> : '';
+        var favoriteIcon = this.state.favorite ? 'favorite' : 'favorite_border';
         return (
             <div className="info">
                 <div className="row name">
@@ -49,8 +61,13 @@ export default React.createClass({
                     </div>
                 </div>
                 <div className="row details">
-                    <div className="col s12">
+                    <div className="col s11">
                         {moreInfo}
+                    </div>
+                    <div className="col s1 favorite">
+                        <a className="waves-effect waves-teal btn-flat" data={plant.id} onClick={this.handleFavorite}>
+                            <i className="material-icons favorite-icon">{favoriteIcon}</i>
+                        </a>
                     </div>
                 </div>
             </div>

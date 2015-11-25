@@ -7,6 +7,64 @@ body {
 }
 nav {
     background-color: #3D405B;
+    .brand-logo {
+        padding-left: 10px;
+    }
+    .preloader-wrapper {
+        margin-top: 14px;
+        .spinner-layer {
+            border-color: #81B29A;
+        }
+    }
+    .filter {
+        margin-right: 2em;
+        span {
+            vertical-align: middle;
+        }
+        i.material-icons {
+            margin-left: 0;
+        }
+    }
+    .select-dropdown {
+        width: 200px !important;
+    }
+    #filters {
+        color: #000;
+        .favorite-icon {
+            font-size: 18px;
+        }
+    }
+    .filter-btn {
+        background-color: #E07A5F;
+        span {
+            color: #fff;
+        }
+    }
+    .nav-wrapper {
+        i.checkbox-icon, i.favorite-icon {
+            display: inline-block;
+            height: 32px;
+            line-height: 32px;
+        }
+    }
+    .filter-checkbox, .checkbox-icon, .filter-name {
+        line-height: 32px;
+        height: 32px;
+    }
+    .filter-checkbox {
+        margin-bottom: 10px;
+        [type="checkbox"]+label:before {
+            margin-top: 8px;
+        }
+        [type="checkbox"]+label {
+            padding-left: 30px;
+        }
+        .checkbox-text {
+            margin-top: -24px;
+            margin-left: 5px;
+            display: inline-block;
+        }
+    }
 }
 
 .plant-item {
@@ -202,4 +260,16 @@ nav {
             }
         }
     }
+}
+
+.icon-filter {
+    width: 30px;
+    height: 30px;
+    background: url(/img/filter-outline.png) no-repeat;
+    margin-top: 50%;
+}
+
+.favorite-icon {
+    color: #E07A5F;
+    cursor: pointer;
 }
