@@ -4,6 +4,7 @@ import PlantList from './PlantList.jsx';
 import Navbar from './Navbar.jsx';
 import Request from 'superagent';
 import FilterDefs from './FilterDefs';
+import SortDefs from './SortDefs';
 
 const pageSize = 3;
 
@@ -24,8 +25,9 @@ export default React.createClass({
             plants: [],
             filteredPlants: [],
             filters: filters,
+            sortBy: localStorage.getItem('sortBy') || 'botanical',
             favorites: this.getFavorites(),
-            loaded: false
+            loaded: false,
         };
     },
 
@@ -133,14 +135,21 @@ export default React.createClass({
             results = this.filterAttribute(attr, results);
         });
         console.log('done filter '+results.length);
-        return results;
+        return results.sort(SortDefs[this.state.sortBy].compare);
+    },
+
+    handleSort(sortBy) {
+        localStorage.setItem('sortBy', sortBy);
+        this.setState({sortBy: sortBy}, () => {
+            this.setState({filteredPlants: this.state.filteredPlants.sort(SortDefs[sortBy].compare)});
+        });
     },
 
     render() {
         if (!this.state.loaded) {
             return (
                 <div className="loading">
-                    <Navbar filters={this.state.filters} />
+                    <Navbar filters={this.state.filters} onSort={this.handleSort} />
                     <div className="progress">
                       <div className="indeterminate"></div>
                     </div>
@@ -154,7 +163,7 @@ export default React.createClass({
         };
         return (
             <div className="toyon">
-                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter}/>
+                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter}  onSort={this.handleSort} />
                 <PlantList plants={filtered.slice(0, this.state.to)} onFavorite={this.handleFavorite}/>
                 {
                     (this.state.to < filtered.length) ?
