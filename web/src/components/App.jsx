@@ -145,11 +145,20 @@ export default React.createClass({
         });
     },
 
+    handleSearch(search) {
+        search = search.toLowerCase();
+        let plants = this.filterPlants().filter((plant) => {
+            return plant.name.botanical.toLowerCase().indexOf(search) >= 0 ||
+                plant.name.common.toLowerCase().indexOf(search) >= 0;
+        });
+        this.setState({filteredPlants: plants});
+    },
+
     render() {
         if (!this.state.loaded) {
             return (
                 <div className="loading">
-                    <Navbar filters={this.state.filters} onSort={this.handleSort} />
+                    <Navbar filters={this.state.filters} onSort={this.handleSort} onSearch={this.handleSearch} />
                     <div className="progress">
                       <div className="indeterminate"></div>
                     </div>
@@ -163,7 +172,7 @@ export default React.createClass({
         };
         return (
             <div className="toyon">
-                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter}  onSort={this.handleSort} />
+                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} />
                 <PlantList plants={filtered.slice(0, this.state.to)} onFavorite={this.handleFavorite}/>
                 {
                     (this.state.to < filtered.length) ?
