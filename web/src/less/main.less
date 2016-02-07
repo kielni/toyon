@@ -45,6 +45,14 @@ nav {
             height: 32px;
             line-height: 32px;
         }
+
+        i.navbar-icon {
+            /* mobile-only */
+            margin-top: 15px;
+        }
+        .nav-buttons {
+            padding-right: 10px;
+        }
     }
     .filter-checkbox, .checkbox-icon, .filter-name {
         line-height: 32px;
@@ -211,7 +219,6 @@ nav {
             margin-left: 1em;
         }
         .size-range {
-            margin-top: 5px;
             .by {
                 padding-left: 5px;
                 padding-right: 5px;
@@ -229,24 +236,23 @@ nav {
             .source {
                 padding-left: 0px;
                 margin-right: 10px;
-                display: inline-block;
                 width: 16px;
                 font-size: 0;
-                margin-top: 7px;
+                margin-top: 5px;
                 background-size: 16px 16px;
                 background-repeat: none;
+                float: left;
             }
-            #missouriBotanicalLinks {
+            .source.missouriBotanicalLinks {
                 content: url(http://www.missouribotanicalgarden.org/favicon.ico);
             }
-            #sanMarcosLinks {
+            .source.sanMarcosLinks {
                 content: url(http://www.smgrowers.com/favicon.ico);
             }
             ul {
                 padding-left: 0px;
                 margin-top: 5px;
                 margin-bottom: 0px;
-                display: inline-block;
             }
             li {
                 display: inline;
@@ -331,3 +337,41 @@ nav {
         background: url(/img/size-large.png) no-repeat;
     }
 }
+
+/* mobile only? */
+.card .card-content {
+    padding: 10px;
+}
+
+.info .col {
+    padding-left: 0;
+}
+.requirements-col, .requirements .col {
+    padding-right: 0;
+}
+
+.more-list ul li {
+    word-wrap: break-word;
+}
+@media only screen and (max-width : 767px) {
+    .size-range .width {
+        display: block;
+    }
+}
+
+.search-bar .close {
+    margin-top: 15px;
+}
+
+#filters {
+    z-index: 999;
+}
+/*@winwidth:`window.screen.availWidth`;*/
+/*@winheight:`$(window).height()` */
+/*
+@dragwidth: @winwidth-240;
+
+.drag-target {
+    width: @winwidth-240;
+}
+*/

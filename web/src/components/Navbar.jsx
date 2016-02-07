@@ -70,7 +70,7 @@ export default React.createClass({
                     <div className="input-field">
                         <input id="search" type="search" className="field" onChange={this.handleSearch} placeholder="Search plants" autoFocus value={this.state.searchText} />
                         <label htmlFor="search">
-                            <i className="material-icons">search</i>
+                            <i className="material-icons navbar-icon">search</i>
                         </label>
                         <i className="material-icons" onClick={this.handleCancelSearch}>close</i>
                     </div>
@@ -79,7 +79,7 @@ export default React.createClass({
         } else {
             return (
                 <a href="#" className="a-search" data-control={control} onClick={this.handleClickSearch}>
-                    <i className="material-icons">search</i>
+                    <i className="material-icons navbar-icon">search</i>
                 </a>
             );
         }
@@ -87,12 +87,12 @@ export default React.createClass({
 
     searchBar() {
         return (
-            <div className="nav-wrapper">
+            <div className="nav-wrapper search-bar">
                 <form>
                     <div className="input-field">
                         <i className="material-icons prefix" onClick={this.handleCancelSearch}>back</i>
                         <input id="search" type="search" onChange={this.handleSearch}  placeholder="Search plants" />
-                        <i className="material-icons" onClick={this.handleClearSearch}>close</i>
+                        <i className="material-icons close" onClick={this.handleClearSearch}>close</i>
                     </div>
                 </form>
             </div>
@@ -118,10 +118,7 @@ export default React.createClass({
             <div className="nav-wrapper">
                 <Filters filters={this.props.filters} onFilter={this.handleFilter} />
                 {this.leftText()}
-                <ul className="right">
-                    <FilterValues attribute="sun" selected={filters.sun} />
-                    <FilterValues attribute="water" selected={filters.water} />
-                    <FilterValues attribute="size" selected={filters.size} />
+                <ul className="right nav-buttons">
                     <li className="hide-on-small-only">
                         {this.searchControl('field')}
                     </li>
@@ -130,12 +127,12 @@ export default React.createClass({
                     </li>
                     <li>
                         <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
-                            <i className="material-icons right">sort</i>
+                            <i className="material-icons right navbar-icon">sort</i>
                         </a>
                     </li>
                     <li>
                         <a href="#" className="filter-button" data-activates="filters">
-                            <i className="icon-filter" />
+                            <i className="material-icons navbar-icon">filter_list</i>
                         </a>
                     </li>
                 </ul>

@@ -25,10 +25,10 @@ export default React.createClass({
                         <li key={idx}><a href={url}>{match.name}</a></li>
                     );
                 });
-                let cssId = src+'Links';
+                let cssId = 'source '+src+'Links';
                 links.push(
                     <div className="more-list" key={src}>
-                        <span className="source" id={cssId} />
+                        <div className={cssId} />
                         <ul>
                             {matches}
                         </ul>

@@ -37,7 +37,7 @@ export default React.createClass({
                             {plant.name.common}
                         </div>
                     </div>
-                    <div className="col s6">
+                    <div className="col s6 requirements-col">
                         <div className="row requirements">
                             <div className="col s4 sun-col">
                                 <Sun sun={plant.sun.range} />
@@ -52,16 +52,16 @@ export default React.createClass({
                     </div>
                 </div>
                 <div className="row details">
-                    <div className="col s6">
+                    <div className="col s7">
+                        {size}
+                    </div>
+                    <div className="col s5">
                         <PlantType type={plant.type} />
                         {group}
                     </div>
-                    <div className="col s6">
-                        {size}
-                    </div>
                 </div>
                 <div className="row details">
-                    <div className="col s11">
+                    <div className="col s10">
                         {moreInfo}
                     </div>
                     <div className="col s1 favorite">
