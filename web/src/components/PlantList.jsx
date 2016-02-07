@@ -9,7 +9,13 @@ export default React.createClass({
     render() {
         if (!this.props.plants.length) {
             return (
-                <div className="no-results">No matching plants.</div>
+                <div className="no-search-results">
+                    <div className="no-results" />
+                    <div className="valign text">
+                        Never heard of a plant like that.
+                        <img src="img/blue-rose.png" />
+                    </div>
+                </div>
             );
         }
         var heights = [];
