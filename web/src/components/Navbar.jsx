@@ -1,22 +1,22 @@
-import React from "react";
-import Filters from "./Filters.jsx";
-import FilterValues from "./FilterValues.jsx";
-import SortDefs from "./SortDefs";
+import React from 'react';
+import Filters from './Filters.jsx';
+import FilterValues from './FilterValues.jsx';
+import SortDefs from './SortDefs';
 
 export default React.createClass({
 
     getInitialState: function() {
         return {
-            search: "none"
+            search: 'none'
         }  
     },
 
     componentDidMount() {
-        $(".filter-button").sideNav({
-            edge: "right",
+        $('.filter-button').sideNav({
+            edge: 'right',
             closeOnClick: false
         });
-        $(".dropdown-button").dropdown({
+        $('.dropdown-button').dropdown({
             hover: false,
             constrain_width: false,
             belowOrigin: true
@@ -29,13 +29,13 @@ export default React.createClass({
 
     handleSort(event) {
         event.stopPropagation();
-        var sort = $(event.target).data("sort");
+        var sort = $(event.target).data('sort');
         this.props.onSort(sort);
     },
 
     handleSearch(event) {
         event.stopPropagation();
-        console.log("handleSearch: event=", event);
+        console.log('handleSearch: event=', event);
         this.props.onSearch(event.target.value);
         this.setState({
             searchText: event.target.value
@@ -50,32 +50,32 @@ export default React.createClass({
         Touching the up arrow closes search and restores the original presentation of the toolbar.
         The X action in the search field clears the query.
         */
-        let a = $(event.target).closest(".a-search");
+        let a = $(event.target).closest('.a-search');
         this.setState({
-            search: $(a).attr("data-control")
+            search: $(a).attr('data-control')
         });
     },
 
     handleCancelSearch() {
-        console.log("handleCancelSearch: search=none");
-        this.props.onSearch("");
+        console.log('handleCancelSearch: search=none');
+        this.props.onSearch('');
         this.setState({
-            search: "none",
-            searchText: ""
+            search: 'none',
+            searchText: ''
         });
     },
 
     handleClearSearch() {
-        console.log("handleClearSearch: search=none");
-        this.props.onSearch("");
+        console.log('handleClearSearch: search=none');
+        this.props.onSearch('');
         this.setState({
-            searchText: ""
+            searchText: ''
         });
         $('#search').focus();
     },
 
     searchControl(control) {
-        if (this.state.search === "field") {
+        if (this.state.search === 'field') {
             return (
                 <form>
                     <div className="input-field">
@@ -114,7 +114,7 @@ export default React.createClass({
 
     leftText() {
         if (this.props.counts) {
-            let label = this.props.counts.filtered === 1 ? "plant" : "plants";
+            let label = this.props.counts.filtered === 1 ? 'plant' : 'plants';
             return (
                 <a href="#" className="brand-logo left">{this.props.counts.filtered} {label}</a>
             );
@@ -155,16 +155,16 @@ export default React.createClass({
 
     render() {
         let sortOptions = SortDefs.keys.map((key) => {
-            console.log("sortBy="+this.props.sortBy+" key="+key);
-            var active = key === this.props.sortBy ? "active" : "inactive";
+            console.log('sortBy='+this.props.sortBy+' key='+key);
+            var active = key === this.props.sortBy ? 'active' : 'inactive';
             return (
                 <li key={key} className={active}>
                     <a href="#" onClick={this.handleSort} data-sort={key}>{SortDefs[key].label}</a>
                 </li>
             );
         });
-        console.log("render state=", this.state);
-        let bar = this.state.search === "bar" ? this.searchBar() : this.regularBar();
+        console.log('render state=', this.state);
+        let bar = this.state.search === 'bar' ? this.searchBar() : this.regularBar();
         return (
             <div className="navbar-fixed">
                 <nav>
