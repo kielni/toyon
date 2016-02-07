@@ -1,22 +1,22 @@
-import React from 'react';
-import Filters from './Filters.jsx';
-import FilterValues from './FilterValues.jsx';
-import SortDefs from './SortDefs';
+import React from "react";
+import Filters from "./Filters.jsx";
+import FilterValues from "./FilterValues.jsx";
+import SortDefs from "./SortDefs";
 
 export default React.createClass({
 
     getInitialState: function() {
         return {
-            search: 'none'
+            search: "none"
         }  
     },
 
     componentDidMount() {
-        $('.filter-button').sideNav({
-            edge: 'right',
+        $(".filter-button").sideNav({
+            edge: "right",
             closeOnClick: false
         });
-        $('.dropdown-button').dropdown({
+        $(".dropdown-button").dropdown({
             hover: false,
             constrain_width: false,
             belowOrigin: true
@@ -29,11 +29,12 @@ export default React.createClass({
 
     handleSort(event) {
         event.stopPropagation();
-        this.props.onSort($(event.target).data('sort'));
+        this.props.onSort($(event.target).data("sort"));
     },
 
     handleSearch(event) {
         event.stopPropagation();
+        console.log("handleSearch: event=", event);
         this.props.onSearch(event.target.value);
         this.setState({
             searchText: event.target.value
@@ -42,33 +43,42 @@ export default React.createClass({
 
     handleClickSearch(event) {
         event.stopPropagation();
-        let a = $(event.target).closest('.a-search');
+        /*
+        Touching the search icon causes the toolbar to transform, clearing other content and displaying a search text field. The search text field automatically receives focus.
+
+        Touching the up arrow closes search and restores the original presentation of the toolbar.
+        The X action in the search field clears the query.
+        */
+        let a = $(event.target).closest(".a-search");
         this.setState({
-            search: $(a).attr('data-control')
+            search: $(a).attr("data-control")
         });
     },
 
     handleCancelSearch() {
-        this.props.onSearch('');
+        console.log("handleCancelSearch: search=none");
+        this.props.onSearch("");
         this.setState({
-            search: 'none',
-            searchText: ''
+            search: "none",
+            searchText: ""
         });
     },
 
     handleClearSearch() {
-        this.props.onSearch('');
+        console.log("handleClearSearch: search=none");
+        this.props.onSearch("");
         this.setState({
-            searchText: ''
+            searchText: ""
         });
+        $('#search').focus();
     },
 
     searchControl(control) {
-        if (this.state.search === 'field') {
+        if (this.state.search === "field") {
             return (
                 <form>
                     <div className="input-field">
-                        <input id="search" type="search" className="field" onChange={this.handleSearch} placeholder="Search plants" autoFocus value={this.state.searchText} />
+                        <input id="search" type="search" className="field" onChange={this.handleSearch} placeholder="Search plants" autoFocus={true} value={this.state.searchText} />
                         <label htmlFor="search">
                             <i className="material-icons navbar-icon">search</i>
                         </label>
@@ -90,8 +100,10 @@ export default React.createClass({
             <div className="nav-wrapper search-bar">
                 <form>
                     <div className="input-field">
-                        <i className="material-icons prefix" onClick={this.handleCancelSearch}>back</i>
-                        <input id="search" type="search" onChange={this.handleSearch}  placeholder="Search plants" />
+                        <input id="search" type="search" onChange={this.handleSearch} placeholder="Search plants" autoFocus={true} value={this.state.searchText} />
+                        <label htmlFor="search">
+                            <i className="material-icons back" onClick={this.handleCancelSearch}>arrow_back</i>
+                        </label>
                         <i className="material-icons close" onClick={this.handleClearSearch}>close</i>
                     </div>
                 </form>
@@ -101,7 +113,7 @@ export default React.createClass({
 
     leftText() {
         if (this.props.counts) {
-            let label = this.props.counts.filtered === 1 ? 'plant' : 'plants';
+            let label = this.props.counts.filtered === 1 ? "plant" : "plants";
             return (
                 <a href="#" className="brand-logo left">{this.props.counts.filtered} {label}</a>
             );
@@ -120,10 +132,10 @@ export default React.createClass({
                 {this.leftText()}
                 <ul className="right nav-buttons">
                     <li className="hide-on-small-only">
-                        {this.searchControl('field')}
+                        {this.searchControl("field")}
                     </li>
                     <li className="hide-on-med-and-up">
-                        {this.searchControl('bar')}
+                        {this.searchControl("bar")}
                     </li>
                     <li>
                         <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
@@ -148,7 +160,8 @@ export default React.createClass({
                 </li>
             );
         });
-        let bar = this.state.search === 'bar' ? this.searchBar() : this.regularBar();
+        console.log("render state=", this.state);
+        let bar = this.state.search === "bar" ? this.searchBar() : this.regularBar();
         return (
             <div className="navbar-fixed">
                 <ul id="sortDropdown" className="dropdown-content">

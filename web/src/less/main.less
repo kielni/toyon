@@ -3,7 +3,14 @@
 body {
     background-color: #fff;
     font-size: 16px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+main {
+    flex: 1 0 auto;
+}
+
 nav {
     background-color: #3D405B;
     .brand-logo {
@@ -338,6 +345,14 @@ nav {
     }
 }
 
+.credits {
+    margin-left: 15px;
+    font-size: 12px;
+    img {
+        height: 12px;
+    }
+}
+
 /* mobile only? */
 .card .card-content {
     padding: 10px;
@@ -359,8 +374,11 @@ nav {
     }
 }
 
-.search-bar .close {
-    margin-top: 15px;
+.search-bar {
+    .material-icons {
+        margin-top: 15px;
+        cursor: pointer;
+    }
 }
 
 #filters {
