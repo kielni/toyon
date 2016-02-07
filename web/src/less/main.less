@@ -73,10 +73,6 @@ nav {
             line-height: 32px;
         }
 
-        i.navbar-icon {
-            /* mobile-only */
-            margin-top: 15px;
-        }
         .nav-buttons {
             padding-right: 10px;
         }
@@ -404,12 +400,11 @@ nav {
 #filters {
     z-index: 999;
 }
-/*@winwidth:`window.screen.availWidth`;*/
-/*@winheight:`$(window).height()` */
-/*
-@dragwidth: @winwidth-240;
 
-.drag-target {
-    width: @winwidth-240;
+@media only screen and (max-width: 600px) {
+    /* fill mobile nav height */
+    nav .nav-wrapper i {
+        height: 56px;
+        line-height: 56px;
+    }
 }
-*/
