@@ -158,7 +158,7 @@ export default React.createClass({
         if (!this.state.loaded) {
             return (
                 <div className="loading">
-                    <Navbar filters={this.state.filters} onSort={this.handleSort} onSearch={this.handleSearch} />
+                    <Navbar filters={this.state.filters} onSort={this.handleSort} onSearch={this.handleSearch} sortBy={this.state.sortBy} />
                     <div className="progress">
                       <div className="indeterminate"></div>
                     </div>
@@ -172,7 +172,7 @@ export default React.createClass({
         };
         return (
             <div className="toyon">
-                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} />
+                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} sortBy={this.state.sortBy} />
                 <PlantList plants={filtered.slice(0, this.state.to)} onFavorite={this.handleFavorite}/>
                 {
                     (this.state.to < filtered.length) ?

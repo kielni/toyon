@@ -29,7 +29,8 @@ export default React.createClass({
 
     handleSort(event) {
         event.stopPropagation();
-        this.props.onSort($(event.target).data("sort"));
+        var sort = $(event.target).data("sort");
+        this.props.onSort(sort);
     },
 
     handleSearch(event) {
@@ -154,8 +155,10 @@ export default React.createClass({
 
     render() {
         let sortOptions = SortDefs.keys.map((key) => {
+            console.log("sortBy="+this.props.sortBy+" key="+key);
+            var active = key === this.props.sortBy ? "active" : "inactive";
             return (
-                <li key={key}>
+                <li key={key} className={active}>
                     <a href="#" onClick={this.handleSort} data-sort={key}>{SortDefs[key].label}</a>
                 </li>
             );
@@ -164,11 +167,11 @@ export default React.createClass({
         let bar = this.state.search === "bar" ? this.searchBar() : this.regularBar();
         return (
             <div className="navbar-fixed">
+                <nav>
                 <ul id="sortDropdown" className="dropdown-content">
                     <li key="header"><span>Sort by</span></li>
                     {sortOptions}
                 </ul>
-                <nav>
                     {bar}
                 </nav>
             </div>
