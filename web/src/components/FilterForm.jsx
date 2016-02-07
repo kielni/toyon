@@ -31,7 +31,6 @@ export default React.createClass({
     render() {
         let attr = this.props.attribute;
         let filter = FilterDefs[attr].values.map((val) => {
-            let icon = `https://s3-us-west-1.amazonaws.com/toyon/${attr}-${val}.png`;
             let id = `${val}Checkbox`;
             let iconClasses = `${attr} ${val} checkbox-icon`;
             return (
