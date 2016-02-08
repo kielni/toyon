@@ -151,9 +151,15 @@ export default React.createClass({
 
     leftText() {
         if (this.props.counts) {
-            let label = this.props.counts.filtered === 1 ? 'plant' : 'plants';
+            let label = '';
+            if (this.state.searchText && this.props.counts.filtered === 1) {
+                label = this.state.searchText;
+            } else {
+                label = this.props.counts.filtered+' ';
+                label += this.props.counts.filtered === 1 ? 'plant' : 'plants';
+            }
             return (
-                <a href="#" className="brand-logo left">{this.props.counts.filtered} {label}</a>
+                <a href="#" className="brand-logo left">{label}</a>
             );
         } else {
             return (
@@ -166,25 +172,25 @@ export default React.createClass({
         let filters = this.props.filters;
         let buttons = [];
         buttons.push(
-            <li className="hide-on-small-only">
+            <li key="search-field" className="hide-on-small-only">
                 {this.searchControl("field")}
             </li>
         );
         buttons.push(
-            <li className="hide-on-med-and-up">
+            <li key="search-bar" className="hide-on-med-and-up">
                 {this.searchControl("bar")}
             </li>
         );
         if (this.state.search === 'none') {
             buttons.push(
-                <li>
+                <li key="sort">
                     <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
                         <i className="material-icons right navbar-icon">sort</i>
                     </a>
                 </li>
             );
             buttons.push(
-                <li>
+                <li key="filter">
                     <a href="#" className="filter-button" data-activates="filters">
                         <i className="material-icons navbar-icon">filter_list</i>
                     </a>
