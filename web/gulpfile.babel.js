@@ -27,10 +27,12 @@ const paths = {
   bundle: 'app.js',
   srcJsx: 'src/Index.jsx',
   srcCss: 'src/**/*.css',
-  srcImg: 'src/images/**',
+  srcImg: 'src/img/**',
+  srcLocal: 'local/**',
   dist: 'dist',
   distJs: 'dist/js',
-  distImg: 'dist/images'
+  distImg: 'dist/img',
+  distLocal: 'dist/local'
 };
 
 gulp.task('clean', cb => {
@@ -40,7 +42,7 @@ gulp.task('clean', cb => {
 gulp.task('browserSync', () => {
   browserSync({
     server: {
-      baseDir: './'
+      baseDir: 'dist'
     }
   });
 });
@@ -103,6 +105,11 @@ gulp.task('images', () => {
   .pipe(gulp.dest(paths.distImg));
 });
 
+gulp.task('local', () => {
+  gulp.src(paths.srcLocal)
+  .pipe(gulp.dest(paths.distLocal));
+});
+
 gulp.task('lint', () => {
   gulp.src(paths.srcJsx)
   .pipe(eslint())
@@ -116,10 +123,10 @@ gulp.task('watchTask', () => {
 });
 
 gulp.task('watch', cb => {
-  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'less', 'styles', 'lint', 'images'], cb);
+  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'less', 'styles', 'htmlReplace', 'lint', 'images', 'local'], cb);
 });
 
 gulp.task('build', cb => {
   process.env.NODE_ENV = 'production';
-  runSequence('clean', ['browserify', 'less', 'styles', 'htmlReplace', 'images'], cb);
+  runSequence('clean', ['browserify', 'less', 'styles', 'htmlReplace', 'images', 'local'], cb);
 });
