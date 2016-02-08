@@ -35,7 +35,6 @@ export default React.createClass({
 
     handleSearch(event) {
         event.stopPropagation();
-        console.log('handleSearch: event=', event);
         this.props.onSearch(event.target.value);
         this.setState({
             searchText: event.target.value
@@ -56,8 +55,17 @@ export default React.createClass({
         });
     },
 
+    handleClickSearchResult(event) {
+        event.stopPropagation();
+        let text = $(event.target).closest('.name').find('.botanical-name').text();
+        this.props.onSearch(text);
+        this.setState({
+            search: 'none',
+            searchText: text
+        });
+    },
+
     handleCancelSearch() {
-        console.log('handleCancelSearch: search=none');
         this.props.onSearch('');
         this.setState({
             search: 'none',
@@ -66,7 +74,6 @@ export default React.createClass({
     },
 
     handleClearSearch() {
-        console.log('handleClearSearch: search=none');
         this.props.onSearch('');
         this.setState({
             searchText: ''
@@ -107,7 +114,36 @@ export default React.createClass({
                         </label>
                         <i className="material-icons close" onClick={this.handleClearSearch}>close</i>
                     </div>
+                    {this.searchResults()}
                 </form>
+            </div>
+        );
+    },
+
+    searchResults() {
+        if (!this.props.plants || !this.state.searchText) {
+            return '';
+        }
+        // sort by common name if set, else botanical name
+        let sortBy = this.state.sortBy === 'botanical' ? 'botanical' : 'common';
+        let plants = this.props.plants.sort((a, b) => {
+            if (a.name[sortBy] === b.name[sortBy]) {
+                return 0;
+            }
+            return a.name[sortBy] < b.name[sortBy] ? -1 : 1;
+        });
+        // non-empty search with results
+        let results = plants.map((plant) => {
+            return (
+                <div key={plant.id} className="name" onClick={this.handleClickSearchResult}>
+                    <span className="botanical-name">{plant.name.botanical} </span>
+                    <span className="common-name">{plant.name.common}</span>
+                </div>
+            );
+        });
+        return (
+            <div className="search-results">
+                {results}
             </div>
         );
     },
@@ -155,7 +191,6 @@ export default React.createClass({
 
     render() {
         let sortOptions = SortDefs.keys.map((key) => {
-            console.log('sortBy='+this.props.sortBy+' key='+key);
             var active = key === this.props.sortBy ? 'active' : 'inactive';
             return (
                 <li key={key} className={active}>
@@ -163,15 +198,14 @@ export default React.createClass({
                 </li>
             );
         });
-        console.log('render state=', this.state);
         let bar = this.state.search === 'bar' ? this.searchBar() : this.regularBar();
         return (
             <div className="navbar-fixed">
                 <nav>
-                <ul id="sortDropdown" className="dropdown-content">
-                    <li key="header"><span>Sort by</span></li>
-                    {sortOptions}
-                </ul>
+                    <ul id="sortDropdown" className="dropdown-content">
+                        <li key="header"><span>Sort by</span></li>
+                        {sortOptions}
+                    </ul>
                     {bar}
                 </nav>
             </div>

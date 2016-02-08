@@ -392,7 +392,6 @@ nav {
 
 .search-bar {
     .material-icons {
-        margin-top: 15px;
         cursor: pointer;
     }
 }
@@ -406,5 +405,29 @@ nav {
     nav .nav-wrapper i {
         height: 56px;
         line-height: 56px;
+    }
+}
+
+.search-results {
+    background-color: #fff;
+    color: #212121;
+    margin-top: -10px;
+    line-height: 32px;
+    padding-left: 50px;
+    max-height: 200px;
+    overflow: scroll;
+    max-width: 95%;
+    div {
+        cursor: pointer;
+        &:hover {
+            background-color: #dcedc8;
+        }
+    }
+    .botanical-name {
+        font-style: italic;
+    }
+    .more {
+        color: #616161;
+        font-weight: italic;
     }
 }

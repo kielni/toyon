@@ -116,7 +116,6 @@ export default React.createClass({
 
     filterAttribute(attr, plants) {
         let values = this.state.filters[attr];
-        console.log('filterAttribute: attr='+attr+' values=', values);
         // no filters to apply
         if (!values || values.length === 0 || values.length === FilterDefs[attr].values.length) {
             return plants;
@@ -134,7 +133,6 @@ export default React.createClass({
         ['favorite', 'sun', 'water', 'size'].forEach((attr) => {
             results = this.filterAttribute(attr, results);
         });
-        console.log('done filter '+results.length);
         return results.sort(SortDefs[this.state.sortBy].compare);
     },
 
@@ -146,10 +144,10 @@ export default React.createClass({
     },
 
     handleSearch(search) {
-        search = search.toLowerCase();
+        search = search.toLowerCase().trim();
         let plants = this.filterPlants().filter((plant) => {
-            return plant.name.botanical.toLowerCase().indexOf(search) >= 0 ||
-                plant.name.common.toLowerCase().indexOf(search) >= 0;
+            let name = plant.name.botanical.toLowerCase()+' '+plant.name.common.toLowerCase();
+            return name.indexOf(search) >= 0;
         });
         this.setState({filteredPlants: plants});
     },
@@ -172,7 +170,7 @@ export default React.createClass({
         };
         return (
             <div className="toyon">
-                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} sortBy={this.state.sortBy} />
+                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} sortBy={this.state.sortBy} plants={filtered} />
                 <PlantList plants={filtered.slice(0, this.state.to)} onFavorite={this.handleFavorite}/>
                 {
                     (this.state.to < filtered.length) ?
