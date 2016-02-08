@@ -92,6 +92,7 @@ export default React.createClass({
                         </label>
                         <i className="material-icons" onClick={this.handleCancelSearch}>close</i>
                     </div>
+                    {this.searchResults()}
                 </form>
             );
         } else {
@@ -163,27 +164,39 @@ export default React.createClass({
 
     regularBar() {
         let filters = this.props.filters;
+        let buttons = [];
+        buttons.push(
+            <li className="hide-on-small-only">
+                {this.searchControl("field")}
+            </li>
+        );
+        buttons.push(
+            <li className="hide-on-med-and-up">
+                {this.searchControl("bar")}
+            </li>
+        );
+        if (this.state.search === 'none') {
+            buttons.push(
+                <li>
+                    <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
+                        <i className="material-icons right navbar-icon">sort</i>
+                    </a>
+                </li>
+            );
+            buttons.push(
+                <li>
+                    <a href="#" className="filter-button" data-activates="filters">
+                        <i className="material-icons navbar-icon">filter_list</i>
+                    </a>
+                </li>
+            );
+        }
         return (
             <div className="nav-wrapper">
                 <Filters filters={this.props.filters} onFilter={this.handleFilter} />
                 {this.leftText()}
                 <ul className="right nav-buttons">
-                    <li className="hide-on-small-only">
-                        {this.searchControl("field")}
-                    </li>
-                    <li className="hide-on-med-and-up">
-                        {this.searchControl("bar")}
-                    </li>
-                    <li>
-                        <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
-                            <i className="material-icons right navbar-icon">sort</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="filter-button" data-activates="filters">
-                            <i className="material-icons navbar-icon">filter_list</i>
-                        </a>
-                    </li>
+                    {buttons}
                 </ul>
             </div>
         );
