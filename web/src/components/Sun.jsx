@@ -7,11 +7,15 @@ export default React.createClass({
         sun: 'sun'
     },
 
+    componentDidMount() {
+        $('.sun.tooltipped').tooltip();
+    },
+
     render() {
         var sun = this.props.sun.map((sunCode) => {
-            var cls = 'sun '+sunCode;
+            var cls = 'tooltipped sun '+sunCode;
             return (
-                <div className={cls} key={sunCode}></div>
+                <div className={cls} data-position="bottom" data-tooltip={this.labels[sunCode]} key={sunCode}></div>
             );
         });
         return (

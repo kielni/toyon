@@ -7,11 +7,16 @@ export default React.createClass({
         M: 'moderate'
     },
 
+    componentDidMount() {
+        $('.water.tooltipped').tooltip();
+    },
+
     render() {
         var water = this.props.water.map((waterCode) => {
-            var cls = 'water '+waterCode;
+            var cls = 'tooltipped water '+waterCode;
+            var label = this.labels[waterCode]+' water';
             return (
-                <span className={cls} key={waterCode}></span>
+                <span className={cls} data-position="bottom" data-tooltip={label} key={waterCode}></span>
             );
         });
         return (
