@@ -9,8 +9,7 @@ export default React.createClass({
     render() {
         if (!this.props.plants.length) {
             return (
-                <div className="no-search-results">
-                    <div className="no-results" />
+                <div className="no-search-results valign-wrapper">
                     <div className="valign text">
                         Never heard of a plant like that.
                         <img src="/img/blue-rose.png" />
