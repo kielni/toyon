@@ -170,7 +170,9 @@ export default React.createClass({
         };
         return (
             <div className="toyon">
-                <Navbar filters={this.state.filters} counts={counts} onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} sortBy={this.state.sortBy} plants={filtered} />
+                <Navbar filters={this.state.filters} counts={counts} 
+                    sortBy={this.state.sortBy} plants={filtered}
+                    onFilter={this.handleFilter} onSort={this.handleSort} onSearch={this.handleSearch} />
                 <PlantList plants={filtered.slice(0, this.state.to)} onFavorite={this.handleFavorite}/>
                 {
                     (this.state.to < filtered.length) ?

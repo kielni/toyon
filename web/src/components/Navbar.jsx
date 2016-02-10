@@ -155,8 +155,8 @@ export default React.createClass({
             if (this.state.searchText && this.props.counts.filtered === 1) {
                 label = this.state.searchText;
             } else {
-                label = this.props.counts.filtered+' ';
-                label += this.props.counts.filtered === 1 ? 'plant' : 'plants';
+                label = this.props.counts.filtered+' of '+this.props.counts.total+' ';
+                label += this.props.counts.total === 1 ? 'plant' : 'plants';
             }
             return (
                 <a href="#" className="brand-logo left">{label}</a>
