@@ -41,7 +41,9 @@ gulp.task('clean', cb => {
 
 gulp.task('browserSync', () => {
   browserSync({
+    notify: false,
     server: {
+      startPath: './dist/index.html',
       baseDir: 'dist'
     }
   });
