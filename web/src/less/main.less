@@ -31,8 +31,8 @@ main {
 
 nav {
     background-color: #3D405B;
-    .brand-logo {
-        padding-left: 10px;
+    .brand-logo.left {
+        left: 5rem;
     }
     .preloader-wrapper {
         margin-top: 14px;
@@ -54,8 +54,25 @@ nav {
     }
     #filters {
         color: #000;
-        .favorite-icon {
+        .favorite-icon, .about-icon {
             font-size: 18px;
+        }
+        .about {
+            line-height: 32px;
+            height: 32px;
+            .about-label {
+                display: inline-block;                
+                vertical-align: middle;
+                margin-top: -10px;
+            }
+            .about-icon {
+                padding-right: 10px;
+            }
+        }
+        a {
+            padding: 0;
+            height: 32px;
+            line-height: 32px;
         }
     }
     .filter-btn {
@@ -70,7 +87,11 @@ nav {
             height: 32px;
             line-height: 32px;
         }
-
+        i.about-icon {
+            display: inline-block;
+            height: 24px;
+            line-height: 24px;
+        }
         .nav-buttons {
             padding-right: 10px;
         }

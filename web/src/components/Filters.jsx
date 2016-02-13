@@ -48,6 +48,14 @@ export default React.createClass({
                 <li className="collection-item">
                     <FilterForm attribute="size" label="Size" values={filters.size} onFilter={this.handleFilter} />
                 </li>
+                <li className="collection-item">
+                    <div className="about">
+                        <a href="https://github.com/kielni/toyon">
+                            <i className="large material-icons about-icon">help</i>
+                            <span className="about-label">About</span>
+                        </a>
+                    </div>
+                </li>
             </ul>
         );
     }

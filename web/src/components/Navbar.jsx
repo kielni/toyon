@@ -13,7 +13,7 @@ export default React.createClass({
 
     componentDidMount() {
         $('.filter-button').sideNav({
-            edge: 'right',
+            edge: 'left',
             closeOnClick: false
         });
         $('.dropdown-button').dropdown({
@@ -155,11 +155,17 @@ export default React.createClass({
             if (this.state.searchText && this.props.counts.filtered === 1) {
                 label = this.state.searchText;
             } else {
-                label = this.props.counts.filtered+' of '+this.props.counts.total+' ';
-                label += this.props.counts.total === 1 ? 'plant' : 'plants';
+                if (this.props.counts.filtered === this.props.counts.total) {
+                    label = 'All plants';
+                } else {
+                    label = this.props.counts.filtered+' ';
+                    label += this.props.counts.total === 1 ? 'plant' : 'plants';
+                }
             }
             return (
-                <a href="#" className="brand-logo left">{label}</a>
+                <a href="#" className="brand-logo left">
+                    {label}
+                </a>
             );
         } else {
             return (
@@ -170,29 +176,29 @@ export default React.createClass({
 
     regularBar() {
         let filters = this.props.filters;
-        let buttons = [];
-        buttons.push(
+        let leftButtons = [], rightButtons = [];
+        rightButtons.push(
             <li key="search-field" className="hide-on-small-only">
                 {this.searchControl("field")}
             </li>
         );
-        buttons.push(
+        rightButtons.push(
             <li key="search-bar" className="hide-on-med-and-up">
                 {this.searchControl("bar")}
             </li>
         );
         if (this.state.search === 'none') {
-            buttons.push(
+            rightButtons.push(
                 <li key="sort">
                     <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
                         <i className="material-icons right navbar-icon">sort</i>
                     </a>
                 </li>
             );
-            buttons.push(
+            leftButtons.push(
                 <li key="filter">
                     <a href="#" className="filter-button" data-activates="filters">
-                        <i className="material-icons navbar-icon">filter_list</i>
+                        <i className="material-icons navbar-icon">menu</i>
                     </a>
                 </li>
             );
@@ -201,8 +207,11 @@ export default React.createClass({
             <div className="nav-wrapper">
                 <Filters filters={this.props.filters} onFilter={this.handleFilter} />
                 {this.leftText()}
+                <ul className="left nav-buttons">
+                    {leftButtons}
+                </ul>
                 <ul className="right nav-buttons">
-                    {buttons}
+                    {rightButtons}
                 </ul>
             </div>
         );
