@@ -29,10 +29,12 @@ const paths = {
   srcCss: 'src/**/*.css',
   srcImg: 'src/img/**',
   srcLocal: 'local/**',
+  srcFont: 'font/**',
   dist: 'dist',
   distJs: 'dist/js',
   distImg: 'dist/img',
-  distLocal: 'dist/local'
+  distLocal: 'dist/local',
+  distFont: 'dist/font'
 };
 
 gulp.task('clean', cb => {
@@ -112,6 +114,11 @@ gulp.task('local', () => {
   .pipe(gulp.dest(paths.distLocal));
 });
 
+gulp.task('font', () => {
+  gulp.src(paths.srcFont)
+  .pipe(gulp.dest(paths.distFont));
+});
+
 gulp.task('lint', () => {
   gulp.src(paths.srcJsx)
   .pipe(eslint())
@@ -125,10 +132,10 @@ gulp.task('watchTask', () => {
 });
 
 gulp.task('watch', cb => {
-  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'less', 'styles', 'htmlReplace', 'lint', 'images', 'local'], cb);
+  runSequence('clean', ['browserSync', 'watchTask', 'watchify', 'less', 'styles', 'htmlReplace', 'lint', 'images', 'local', 'font'], cb);
 });
 
 gulp.task('build', cb => {
   process.env.NODE_ENV = 'production';
-  runSequence('clean', ['browserify', 'less', 'styles', 'htmlReplace', 'images', 'local'], cb);
+  runSequence('clean', ['browserify', 'less', 'styles', 'htmlReplace', 'images', 'local', 'font'], cb);
 });

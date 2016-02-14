@@ -12,7 +12,7 @@ export default React.createClass({
         var id = 'plant'+plant.id;
         return (
             <div className="row plant-item">
-                <div className="col s12 m8">
+                <div className="col s12 m8 offset-m2">
                     <div className="card">
                         <div className="x-card-image plant-carousel">
                             <PlantCarousel plant={plant} />

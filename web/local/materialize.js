@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.97.5 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -534,6 +534,14 @@ if ($) {
         verticalOffset = originHeight;
       }
 
+      // Check for scrolling positioned container.
+      var scrollOffset = 0;
+      var wrapper = origin.parent();
+      if (!wrapper.is('body') && wrapper[0].scrollHeight > wrapper[0].clientHeight) {
+        scrollOffset = wrapper[0].scrollTop;
+      }
+
+
       if (offsetLeft + activates.innerWidth() > $(window).width()) {
         // Dropdown goes past screen on right, force right alignment
         currAlignment = 'right';
@@ -571,7 +579,7 @@ if ($) {
       // Position dropdown
       activates.css({
         position: 'absolute',
-        top: origin.position().top + verticalOffset,
+        top: origin.position().top + verticalOffset + scrollOffset,
         left: leftPosition
       });
 
@@ -672,7 +680,8 @@ if ($) {
   $(document).ready(function(){
     $('.dropdown-button').dropdown();
   });
-}( jQuery ));;(function($) {
+}( jQuery ));
+;(function($) {
     var _stack = 0,
     _lastID = 0,
     _generateID = function() {
@@ -914,7 +923,7 @@ if ($) {
         var count = 0;
         while (ancestor !== null && !$(ancestor).is(document)) {
           var curr = $(ancestor);
-          if (curr.css('overflow') === 'hidden') {
+          if (curr.css('overflow') !== 'visible') {
             curr.css('overflow', 'visible');
             if (ancestorsChanged === undefined) {
               ancestorsChanged = curr;
@@ -941,10 +950,10 @@ if ($) {
             returnToOriginal();
           });
           // Animate Overlay
-          $('body').append(overlay);
-          overlay.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'}
-            );
-
+          // Put before in origin image to preserve z-index layering.
+          origin.before(overlay);
+          overlay.velocity({opacity: 1},
+                           {duration: inDuration, queue: false, easing: 'easeOutQuad'} );
 
         // Add and animate caption if it exists
         if (origin.data('caption') !== "") {
@@ -954,8 +963,6 @@ if ($) {
           $photo_caption.css({ "display": "inline" });
           $photo_caption.velocity({opacity: 1}, {duration: inDuration, queue: false, easing: 'easeOutQuad'});
         }
-
-
 
         // Resize Image
         var ratio = 0;
@@ -1021,7 +1028,7 @@ if ($) {
 
       // Return on scroll
       $(window).scroll(function() {
-        if (overlayActive ) {
+        if (overlayActive) {
           returnToOriginal();
         }
       });
@@ -1106,7 +1113,9 @@ if ($) {
               $(this).remove();
 
               // Remove overflow overrides on ancestors
-              ancestorsChanged.css('overflow', '');
+              if (ancestorsChanged) {
+                ancestorsChanged.css('overflow', '');
+              }
             }
           });
 
@@ -2186,12 +2195,13 @@ $(document).ready(function(){
           if (e.gesture.pointerType == "touch") {
             var velocityX = e.gesture.velocityX;
             panning = false;
+            var width = Math.min(window.innerWidth/2, window.innerWidth - menu_id.width());
             if (options.edge === 'left') {
               // If velocityX <= 0.3 then the user is flinging the menu closed so ignore menuOut
               if ((menuOut && velocityX <= 0.3) || velocityX < -0.5) {
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: width+'px', right: 0, left: ''});
               }
               else if (!menuOut || velocityX > 0.3) {
                 // Enable Scrolling
@@ -2209,7 +2219,7 @@ $(document).ready(function(){
               if ((menuOut && velocityX >= -0.3) || velocityX > 0.5) {
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 $('#sidenav-overlay').velocity({opacity: 1 }, {duration: 50, queue: false, easing: 'easeOutQuad'});
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: width+'px', right: '', left: 0});
               }
               else if (!menuOut || velocityX < -0.3) {
                 // Enable Scrolling
@@ -2240,12 +2250,13 @@ $(document).ready(function(){
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
               
+              var width = Math.min(window.innerWidth/2, window.innerWidth - menu_id.width());
               if (options.edge === 'left') {
-                dragTarget.css({width: '50%', right: 0, left: ''});
+                dragTarget.css({width: width+'px', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
               }
               else {
-                dragTarget.css({width: '50%', right: '', left: 0});
+                dragTarget.css({width: width+'px', right: '', left: 0});
                 menu_id.velocity({right: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
                 menu_id.css('left','');
               }
@@ -2674,6 +2685,20 @@ $(document).ready(function(){
       }
     };
 
+    // Radio and Checkbox focus class
+    var radio_checkbox = 'input[type=radio], input[type=checkbox]';
+    $(document).on('keyup.radio', radio_checkbox, function(e) {
+      // TAB, check if tabbing to radio or checkbox.
+      if (e.which === 9) {
+        $(this).addClass('tabbed');
+        var $this = $(this);
+        $this.one('blur', function(e) {
+          
+          $(this).removeClass('tabbed');
+        });
+        return;
+      }
+    });
 
     // Textarea Auto Resize
     var hiddenDiv = $('.hiddendiv').first();
@@ -3036,7 +3061,7 @@ $(document).ready(function(){
       }
 
       // Make option as selected and scroll to selected position
-      activateOption = function(collection, newOption) {
+      var activateOption = function(collection, newOption) {
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
@@ -3848,15 +3873,20 @@ $(document).ready(function(){
             var selector = value.selector,
                 offset = value.offset,
                 callback = value.callback;
+                repeat = value.repeat;
 
             var currentElement = document.querySelector(selector);
             if ( currentElement !== null) {
               var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
 
               if (windowScroll > (elementOffset + offset)) {
-                if (value.done !== true) {
-                  var callbackFunc = new Function(callback);
-                  callbackFunc();
+                if (repeat || value.done !== true) {
+                  if (typeof callback === 'function') {
+                    callback();
+                  } else {
+                    var callbackFunc = new Function(callback);
+                    callbackFunc();
+                  }
                   value.done = true;
                 }
               }
@@ -3866,7 +3896,8 @@ $(document).ready(function(){
     }, 100);
   };
 
-})(jQuery);;/*!
+})(jQuery);
+;/*!
  * pickadate.js v3.5.0, 2014/04/13
  * By Amsul, http://amsul.ca
  * Hosted on http://amsul.github.io/pickadate.js
