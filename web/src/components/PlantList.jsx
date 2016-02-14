@@ -12,7 +12,7 @@ export default React.createClass({
                 <div className="no-search-results valign-wrapper">
                     <div className="valign text">
                         Never heard of a plant like that.
-                        <img src="/img/blue-rose.png" />
+                        <img src="img/blue-rose.png" />
                     </div>
                 </div>
             );
