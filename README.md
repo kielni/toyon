@@ -1,30 +1,26 @@
-# California garden plants screener
+# Toyon: California garden plant screener
 
-Browse and search low water plants the way you want.
+This project combines water requirements from the [Water Use Classification of Landscape Species](http://ucanr.edu/sites/WUCOLS/) database, plant characteristics from [Missouri Botanical Garden](http://www.missouribotanicalgarden.org/) and [San Marcos Growers)[http://www.smgrowers.com/], and plant photos from [Flickr](http://www.flickr.com) on a modern, responsive website I can use anywhere: [toyon.serris.net](http://toyon.serris.net).
 
-It doesn't rain in the Bay Area from May through September.  There are lots 
-of plants that are adapted for the Mediterranean climate, but it's harder 
-than it should be to browse and find them.  
+In my garden, cold hardiness is almost irrelevant.  With no rain from May to September, water requirements
+are key. I love big beautiful garden books like 
+[Plants and Landscapes for Summer-Dry Climates](http://www.amazon.com/Plants-Landscapes-Summer-Dry-Climates-Francisco/dp/0975323113), 
+but garden books have several limitations:
 
-I only want to browse plants that are adapted to my climate.  Many garden 
-books attempt to cover the entire US, but most of the plants they cover 
-aren't adapted for dry summers. 
+- not great for filtering (for example, find low water use, partial shade, 2-4 foot tall plants)
+- never enough pictures; sometimes there's a closeup, sometimes a landscape
+- too big and bulky to carry around when shopping for plants at the nursery
+- local nurseries have constantly changing inventory, so what seems like the perfect plant may or may not be readily available
 
-Big beautiful garden books like 
-[Plants and Landscapes for Summer-Dry Climates](http://www.amazon.com/Plants-Landscapes-Summer-Dry-Climates-Francisco/dp/0975323113) 
-are great for browsing, but bad for filtering (find low water use, partial 
-shade, 2-4 foot tall plants).  They're also too big and bulky (3.8 pounds)
-to carry around in the nursery.
+At the nursery, plant labels are often vague ("regular water"), missing important information (how big does it get?).  Nurseries, especially big-box retailers, carry lots of plants that aren't adapted to my dry summer Mediterranean climate.
 
-I want to search, filter, and browse garden plants from my phone or tablet.
+Crowd-sourced garden sites such as <a href="http://davesgarden.com/">Dave's Garden</a> have lots of information, but of suspect quality and/or relevance (are the reviewers who said "low water" from Oregon or Arizona?)  They also serve a national or international audience, so most contributors live in very different climates than mine.
 
-## output
-
-[WUCOLS plant database reformatted for ease of use](https://docs.google.com/spreadsheets/d/1AYyaBizzfew_oH6Ky1dGkvvfOpmgcb2jLkotVvGOTLI/edit?usp=sharing)
+This site is for California gardeners who want to browse, filter, and search Mediterranean-adapted garden plants. 
 
 ## details
 
-### WUCOLS
+### data
 
 [Water Use Classfication of Landscape Species](http://ucanr.edu/sites/WUCOLS/) (WUCOLS) is an amazing resource.  It
 
@@ -99,3 +95,35 @@ The WUCOLS data includes names and water requirements for several thousand
 plants, but no other plant requirements (sun or shade? 1 or 20 feet tall)?
 [scripts](scripts/README.md) scrape data on plants and write it to one 
 database.
+
+### output
+
+More details on the [scripts](scripts/README.md)
+
+The output of these transforms is a spreadsheet: 
+[WUCOLS plant database reformatted for ease of use](https://docs.google.com/spreadsheets/d/1AYyaBizzfew_oH6Ky1dGkvvfOpmgcb2jLkotVvGOTLI/edit?usp=sharing)
+
+A JSON version of this data powers the UI at [toyon.serris.net](http://toyon.serris.net).
+
+### UI
+
+The UI presents the plant data described above as Material cards.  Each card includes plant photos in a carousel, sun and water requirements, common and botanical names, and links to external pages about specific varieties.
+
+![plant card](toyon_card.png)
+
+The left menu allows filtering plants by sun requirements, water requirements, size, or favorite status.
+
+![plant card](toyon_filter.png)
+
+The search icon allows seaching for a specific plant within the filtered set.  Plants can be sorted by botanical name, common name, water, sun, height, or spread.
+
+![plant card](toyon_mobile_search.png)
+
+The UI is written in React, with the help of several open-source projects, including
+
+- [Materialize, a CSS Framework based on Material Design](http://materializecss.com/)
+- [React Starterify](https://github.com/Granze/react-starterify)
+- [Slick carousel](http://kenwheeler.github.io/slick/)
+
+More details on the [UI](web/README.md)
+
