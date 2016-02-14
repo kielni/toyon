@@ -26,8 +26,12 @@ export default React.createClass({
     render() {
         let filters = this.props.filters;
         let favoriteIcon = this.state.favoritesOnly ? 'favorite' : 'favorite_border';
+        let filtered = this.props.counts && this.props.counts.filtered ? this.props.counts.filtered : 0;
         return (
             <ul id="filters" className="side-nav collection">
+                <li className="collection-item">
+                    {filtered} {filtered === 1 ? 'plant' : 'plants'}
+                </li>
                 <li className="collection-item">
                     <div className="switch">
                         <label>

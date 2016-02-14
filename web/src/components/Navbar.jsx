@@ -205,7 +205,7 @@ export default React.createClass({
         }
         return (
             <div className="nav-wrapper">
-                <Filters filters={this.props.filters} onFilter={this.handleFilter} />
+                <Filters filters={this.props.filters} onFilter={this.handleFilter} counts={this.props.counts}/>
                 {this.leftText()}
                 <ul className="left nav-buttons">
                     {leftButtons}
