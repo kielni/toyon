@@ -9,13 +9,7 @@ I scraped two sites to get details on plants in the WUCOLS list:
 
 ## search name cleanup
 
-add `name.search`; name minus
-
-- spp.
-- '
--  x 
-- cvs.
--  and 
+add `name.search`; name minus [spp., -, ,x, cvs., and ]
 
 
 ## steps
@@ -37,13 +31,3 @@ add `name.search`; name minus
 - add San Marcos search results left out: `node get_san_marcos.js toyon3.json toyon7.json | tee toyon8.json`
 - keep only plants with full info; remove metadata not needed for screening: `node prune.js toyon8.json | tee pruned.json`
 - get biggest Flickr photo <= 1600px: `node flickr_photo_size.js pruned.json | tee flickr.json`
-
-### TODO:
-
-- prune: include links
-- prune include group: in toyon7, not pruned
-- favorite button saves to localstorage
-- remove missing pictures
-- filter drop down
-
-
