@@ -2,21 +2,21 @@
 
 This project combines water requirements from the [Water Use Classification of Landscape Species](http://ucanr.edu/sites/WUCOLS/) database, plant characteristics from [Missouri Botanical Garden](http://www.missouribotanicalgarden.org/) and [San Marcos Growers)[http://www.smgrowers.com/], and plant photos from [Flickr](http://www.flickr.com) on a modern, responsive website I can use anywhere: [toyon.serris.net](http://toyon.serris.net).
 
+![plant card](toyon_card.png)
+
 In my garden, cold hardiness is almost irrelevant.  With no rain from May to September, water requirements
-are key. I love big beautiful garden books like 
-[Plants and Landscapes for Summer-Dry Climates](http://www.amazon.com/Plants-Landscapes-Summer-Dry-Climates-Francisco/dp/0975323113), 
-but garden books have several limitations:
+are key, yet garden books intended for the entire US often pay little attention to water.  [Plants and Landscapes for Summer-Dry Climates](http://www.amazon.com/Plants-Landscapes-Summer-Dry-Climates-Francisco/dp/0975323113) is big, beautiful, and is great for browsing, but not necessarily for finding plants to buy.  Garden books have several limitations:
 
 - not great for filtering (for example, find low water use, partial shade, 2-4 foot tall plants)
 - never enough pictures; sometimes there's a closeup, sometimes a landscape
 - too big and bulky to carry around when shopping for plants at the nursery
 - local nurseries have constantly changing inventory, so what seems like the perfect plant may or may not be readily available
 
-At the nursery, plant labels are often vague ("regular water"), missing important information (how big does it get?).  Nurseries, especially big-box retailers, carry lots of plants that aren't adapted to my dry summer Mediterranean climate.
+At the nursery, plant labels are often vague ("regular water") or missing important information (how big does it get?).  Nurseries, especially big-box retailers, carry lots of plants that aren't adapted to my dry summer Mediterranean climate.
 
 Crowd-sourced garden sites such as <a href="http://davesgarden.com/">Dave's Garden</a> have lots of information, but of suspect quality and/or relevance (are the reviewers who said "low water" from Oregon or Arizona?)  They also serve a national or international audience, so most contributors live in very different climates than mine.
 
-This site is for California gardeners who want to browse, filter, and search Mediterranean-adapted garden plants. 
+Toyon is for California gardeners who want to browse, filter, and search Mediterranean-adapted garden plants. 
 
 ## details
 
@@ -108,8 +108,6 @@ A JSON version of this data powers the UI at [toyon.serris.net](http://toyon.ser
 ### UI
 
 The UI presents the plant data described above as Material cards.  Each card includes plant photos in a carousel, sun and water requirements, common and botanical names, and links to external pages about specific varieties.
-
-![plant card](toyon_card.png)
 
 The left menu allows filtering plants by sun requirements, water requirements, size, or favorite status.
 
