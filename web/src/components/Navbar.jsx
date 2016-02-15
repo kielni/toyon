@@ -66,14 +66,23 @@ export default React.createClass({
         $('#search').focus();
     },
 
+    cancelSearchIcon() {
+        return (<i className="material-icons back" onClick={this.handleCancelSearch}>arrow_back</i>);
+    },
+
+    searchIcon() {
+        return (<i className="material-icons navbar-icon">search</i>);
+    },
+
     searchControl(control) {
         if (this.state.search === 'field') {
+            let leftIcon = this.state.searchText ? this.cancelSearchIcon() : this.searchIcon();
             return (
                 <form>
                     <div className="input-field">
                         <input id="search" type="search" className="field" onChange={this.handleSearch} placeholder="Search plants" autoFocus={true} value={this.state.searchText} />
                         <label htmlFor="search">
-                            <i className="material-icons navbar-icon">search</i>
+                            {leftIcon}
                         </label>
                         <i className="material-icons" onClick={this.handleCancelSearch}>close</i>
                     </div>
@@ -83,7 +92,7 @@ export default React.createClass({
         } else {
             return (
                 <a href="#" className="a-search" data-control={control} onClick={this.handleClickSearch}>
-                    <i className="material-icons navbar-icon">search</i>
+                    {this.searchIcon()}
                 </a>
             );
         }
@@ -96,7 +105,7 @@ export default React.createClass({
                     <div className="input-field">
                         <input id="search" type="search" onChange={this.handleSearch} placeholder="Search plants" autoFocus={true} value={this.state.searchText} />
                         <label htmlFor="search">
-                            <i className="material-icons back" onClick={this.handleCancelSearch}>arrow_back</i>
+                            {this.cancelSearchIcon()}
                         </label>
                         <i className="material-icons close" onClick={this.handleClearSearch}>close</i>
                     </div>
