@@ -136,8 +136,9 @@ export default React.createClass({
                 </div>
             );
         });
+        let classes = 'search-results '+(plants.length ? 'results' : 'empty');
         return (
-            <div className="search-results">
+            <div className={classes}>
                 {results}
             </div>
         );
