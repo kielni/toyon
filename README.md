@@ -1,6 +1,6 @@
 # Toyon: California garden plant screener
 
-This project combines water requirements from the [Water Use Classification of Landscape Species](http://ucanr.edu/sites/WUCOLS/) database, plant characteristics from [Missouri Botanical Garden](http://www.missouribotanicalgarden.org/) and [San Marcos Growers)[http://www.smgrowers.com/], and plant photos from [Flickr](http://www.flickr.com) on a modern, responsive website I can use anywhere: [toyon.serris.net](http://toyon.serris.net).
+This project combines water requirements from the [Water Use Classification of Landscape Species](http://ucanr.edu/sites/WUCOLS/) database, plant characteristics from [Missouri Botanical Garden](http://www.missouribotanicalgarden.org/) and [San Marcos Growers)[http://www.smgrowers.com/], and plant photos from [Flickr](http://www.flickr.com) on a modern, responsive website I can use anywhere: **[toyon.serris.net](http://toyon.serris.net)**.
 
 ![plant card](toyon_card.png)
 
