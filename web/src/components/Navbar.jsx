@@ -1,7 +1,6 @@
 import React from 'react';
-import Filters from './Filters.jsx';
-import FilterValues from './FilterValues.jsx';
-import SortDefs from './SortDefs';
+import FilterDropdown from './FilterDropdown.jsx';
+import SortDropdown from './SortDropdown.jsx';
 
 export default React.createClass({
 
@@ -11,25 +10,11 @@ export default React.createClass({
         }  
     },
 
-    componentDidMount() {
-        $('.filter-button').sideNav({
-            edge: 'left',
-            closeOnClick: false
-        });
-        $('.dropdown-button').dropdown({
-            hover: false,
-            constrain_width: false,
-            belowOrigin: true
-        });
-    },
-
     handleFilter(attr, values) {
         this.props.onFilter(attr, values);
     },
 
-    handleSort(event) {
-        event.stopPropagation();
-        var sort = $(event.target).data('sort');
+    handleSort(sort) {
         this.props.onSort(sort);
     },
 
@@ -149,7 +134,7 @@ export default React.createClass({
         );
     },
 
-    leftText() {
+    title() {
         if (this.props.counts) {
             let label = '';
             if (this.state.searchText && this.props.counts.filtered === 1) {
@@ -190,27 +175,22 @@ export default React.createClass({
         if (this.state.search === 'none') {
             rightButtons.push(
                 <li key="sort">
-                    <a className="dropdown-button" href="#" data-activates="sortDropdown" data-constrainwidth="false" data-beloworigin="true">
-                        <i className="material-icons right navbar-icon">sort</i>
-                    </a>
+                    <SortDropdown onSort={this.handleSort} />
                 </li>
             );
             leftButtons.push(
                 <li key="filter">
-                    <a href="#" className="filter-button" data-activates="filters">
-                        <i className="material-icons navbar-icon">menu</i>
-                    </a>
+                    <FilterDropdown counts={this.props.counts} filters={this.props.filters} onFilter={this.handleFilter} />
                 </li>
             );
         }
         return (
             <div className="nav-wrapper">
-                <Filters filters={this.props.filters} onFilter={this.handleFilter} counts={this.props.counts}/>
-                {this.leftText()}
-                <ul className="left nav-buttons">
+                {this.title()}
+                <ul key="left-nav-buttons " className="left nav-buttons">
                     {leftButtons}
                 </ul>
-                <ul className="right nav-buttons">
+                <ul key="right-nav-buttons" className="right nav-buttons">
                     {rightButtons}
                 </ul>
             </div>
@@ -218,23 +198,10 @@ export default React.createClass({
     },
 
     render() {
-        let sortOptions = SortDefs.keys.map((key) => {
-            var active = key === this.props.sortBy ? 'active' : 'inactive';
-            return (
-                <li key={key} className={active}>
-                    <a href="#" onClick={this.handleSort} data-sort={key}>{SortDefs[key].label}</a>
-                </li>
-            );
-        });
-        let bar = this.state.search === 'bar' ? this.searchBar() : this.regularBar();
         return (
             <div className="navbar-fixed">
                 <nav>
-                    <ul id="sortDropdown" className="dropdown-content">
-                        <li key="header"><span>Sort by</span></li>
-                        {sortOptions}
-                    </ul>
-                    {bar}
+                    {this.state.search === 'bar' ? this.searchBar() : this.regularBar()}
                 </nav>
             </div>
         );
