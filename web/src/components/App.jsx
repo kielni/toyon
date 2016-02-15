@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link }  from 'react-router';
 import PlantList from './PlantList.jsx';
 import Navbar from './Navbar.jsx';
 import Request from 'superagent';
