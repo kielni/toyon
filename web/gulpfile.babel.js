@@ -21,7 +21,7 @@ import image from 'gulp-image';
 import runSequence from 'run-sequence';
 import less from 'gulp-less';
 import path from 'path';
-
+import fs from 'fs';
 
 const paths = {
   bundle: 'app.js',
@@ -98,8 +98,12 @@ gulp.task('less', function () {
 });
 
 gulp.task('htmlReplace', () => {
+  var ga = '';
+  try {
+    ga = fs.readFileSync('ga.js', 'utf8');
+  } catch (e) {}
   gulp.src('index.html')
-  .pipe(htmlReplace({css: 'styles/main.css', js: 'js/app.js'}))
+  .pipe(htmlReplace({css: 'styles/main.css', js: 'js/app.js', ga: ga}))
   .pipe(gulp.dest(paths.dist));
 });
 

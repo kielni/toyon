@@ -17,7 +17,9 @@ export default React.createClass({
         this.setState({favorite: newValue}, () => {
             this.props.onFavorite(this.props.plant.id, newValue);
         });
-        ga('send', 'event', 'favorite', newValue ? 'favorite' : 'unfavorite', this.props.plant.name.botanical);
+        if (ga) {
+            ga('send', 'event', 'favorite', newValue ? 'favorite' : 'unfavorite', this.props.plant.name.botanical);
+        }
     },
 
     render() {

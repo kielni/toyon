@@ -12,12 +12,16 @@ export default React.createClass({
 
     handleFilter(attr, values) {
         this.props.onFilter(attr, values);
-        ga('send', 'event', 'filter', 'sort', attr+'='+values.join(','));
+        if (ga) {
+            ga('send', 'event', 'filter', 'sort', attr+'='+values.join(','));
+        }
     },
 
     handleSort(sort) {
         this.props.onSort(sort);
-        ga('send', 'event', 'sort', 'sort', sort);
+        if (ga) {
+            ga('send', 'event', 'sort', 'sort', sort);
+        }
     },
 
     handleSearch(event) {
@@ -40,7 +44,9 @@ export default React.createClass({
         this.setState({
             search: $(a).attr('data-control')
         });
-        ga('send', 'event', 'search', 'click');
+        if (ga) {
+            ga('send', 'event', 'search', 'click');
+        }
     },
 
     handleClickSearchResult(event) {
@@ -51,7 +57,9 @@ export default React.createClass({
             search: 'none',
             searchText: text
         });
-        ga('send', 'event', 'search', 'click-result', text);
+        if (ga) {
+            ga('send', 'event', 'search', 'click-result', text);
+        }
     },
 
     handleCancelSearch() {
